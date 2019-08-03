@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts | Giovanni Bindi</title>
+    <link>https:w00zie.github.io/post/</link>
+      <atom:link href="https:w00zie.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <description>Posts</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 02 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https:w00zie.github.io</url>
+      <title>Posts</title>
+      <link>https:w00zie.github.io/post/</link>
+    </image>
+    
+    <item>
+      <title>SVM from an optimization point of view</title>
+      <link>https:w00zie.github.io/post/svm/</link>
+      <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https:w00zie.github.io/post/svm/</guid>
+      <description>&lt;p&gt;One of the most known and widely used learning model is &lt;strong&gt;SVM&lt;/strong&gt; (Support Vector Machine).&lt;/p&gt;
+
+&lt;p&gt;In this first post we are going to analyze the formal structure of the problem and we are going through the (simple) math needed to write down the SVM equations for both the linear and non-linear cases. Let&#39;s start with definitions.&lt;/p&gt;
+
+&lt;h1 id=&#34;problem-structure&#34;&gt;Problem Structure&lt;/h1&gt;
+
+&lt;p&gt;We are given a set of couples, named $T$, which is going to be our training set.&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ T = \{ (x_i, y_i) : x_i \in X \subseteq \mathbb{R}^n, y_i \in Y, i=1,\dots,N \}\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;The $x_i$ are usually referred as &lt;em&gt;observations&lt;/em&gt; while the $y_i$ are called &lt;em&gt;labels&lt;/em&gt; or &lt;em&gt;targets&lt;/em&gt;. We have $|T|=N$ data points.&lt;/p&gt;
+
+&lt;p&gt;If $Y = \mathbb{R}$ we are dealing with &lt;em&gt;regression&lt;/em&gt;, otherwise with &lt;em&gt;classification&lt;/em&gt;. For this walkthrough we will deal with classification and so we&#39;ll adopt, without loss of generality, &lt;span  class=&#34;math&#34;&gt;\(Y = \{+1, -1\}\)&lt;/span&gt;.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&#34;linearly-separable-sets&#34;&gt;Linearly separable sets&lt;/h2&gt;
+
+&lt;p&gt;This is the simplest case: we have two disjoint sets, namely $P$ and $N$:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ P = \{ x_i \in T: y_i = +1 \} \\
+   N = \{ x_i \in T: y_i = -1 \} \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;that are &lt;em&gt;linearly separable&lt;/em&gt;. This condition is expressed through the existence of a &lt;strong&gt;separating hyperplane&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ H(w,b) = \{ x \in \mathbb{R}^n : w \cdot x + b = 0 \} \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;such that the points $x_i \in P$ belong to an half space and the points $x_i \in N$ to the other one. Formally $\exists \hspace{3pt} w \in \mathbb{R}^n, b \in \mathbb{R}$:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ w \cdot x_i + b \geq \epsilon, \hspace{15pt} \forall x_i \in P \\
+ w \cdot x_j + b \leq -\epsilon, \hspace{15pt} \forall x_j \in N \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;with $\epsilon &amp;gt; 0$. Dividing by $\epsilon$ both members of both equations we obtain:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ w \cdot x_i + b \geq 1, \hspace{15pt} \forall x_i \in P \\
+ w \cdot x_j + b \leq -1, \hspace{15pt} \forall x_j \in N \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;~/Documents/sito/academic/static/svm/linsep.jpg&#34; alt=&#34;Linsep&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&#34;margin&#34;&gt;Margin&lt;/h2&gt;
+
+&lt;p&gt;A fundamental concept in SVM is the &lt;strong&gt;margin&lt;/strong&gt;, expressed as the minimum distance $\gamma$ between the points in $D \overset{\Delta}{=} P \cup N$ and the separating hyperplane $H(w,b)$:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \gamma(w, b) = \min_{x \in D} \bigg \{ \frac{|w \cdot x + b|}{||w||} \bigg \} \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Where $|| \cdot || := || \cdot ||_2$ represents the euclidean norm.&lt;/p&gt;
+
+&lt;h3 id=&#34;derivation&#34;&gt;Derivation&lt;/h3&gt;
+
+&lt;p&gt;This &lt;em&gt;minimum distance&lt;/em&gt; formulation is well known in Geometry, but we can derive it from &lt;em&gt;an optimization point of view&lt;/em&gt; as well. Let&#39;s start calculating the distance between a point $\bar{x}$ and the hyperplane $H(w,b)$. We can write down this minimization problem as:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \min_{x \in \mathbb{R}^n} \quad ||\bar{x} - x|| \\
+   \hspace{15pt}\textrm{s.t.} \quad w \cdot x + b = 0 \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;We can apply a strictly increasing transformation to our objective function (to get rid of the non-differentiability) without changing the global optima of our problem:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \min_{x \in \mathbb{R}^n} \quad \frac{1}{2}||\bar{x} - x||^2 \\
+   \hspace{2pt} \textrm{s.t.} \quad w \cdot x + b = 0 \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;We now have a strictly convex objective function subject to continuously differentiable linear constraints so we can apply the &lt;a href=&#34;https://en.wikipedia.org/wiki/Karush%E2%80%93Kuhn%E2%80%93Tucker_conditions&#34;&gt;&lt;strong&gt;Karush–Kuhn–Tucker&lt;/strong&gt;&lt;/a&gt; optimality conditions:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \nabla_x \bigg [ \frac{1}{2} ||\bar{x} - x||^2 + \lambda(w \cdot x + b) \bigg ] = 0 \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \hspace{67pt}= (\bar{x} - x) + \lambda w = 0 \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Expressing $x = \bar{x} + \lambda w$ and substituting it into the constraint equation we obtain:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ w \cdot (\bar{x} + \lambda w) + b \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \hspace{3pt} = w \cdot \bar{x} + \lambda ( w \cdot w) + b \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \hspace{14pt}= w \cdot \bar{x} + \lambda ||w||^2 + b = 0 \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;From which we can isolate the lagrangean multiplier and write&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[\lambda = -\frac{w \cdot \bar{x} + b}{||w||^2}\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;We were originally interested in $||\bar{x} - x||$ and from the optimality conditions we can now re-write this quantity as:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[||\bar{x} - x|| = ||\lambda w|| = \frac{|w \cdot \bar{x} + b|}{||w||}\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Which is the projection of a given point $\bar{x}$ on an hyperplane $H(w,b)$.&lt;/p&gt;
+
+&lt;p&gt;We can now obtain the definition of margin given above using this result, extending the definition so that we are interested in the minimum distance between every point $x \in D$ to $H(w,b)$.&lt;/p&gt;
+
+&lt;p&gt;It is quite intuitive that the margin of a given separating hyperplane is related to the
+&lt;em&gt;generalization capability&lt;/em&gt; of the corresponding linear classifier. This relationship is analyzed in the &lt;a href=&#34;https://www.springer.com/us/book/9780387987804&#34;&gt;Statistical Learning Theory&lt;/a&gt;, which theoretically motivates the importance of defining
+the hyperplane with maximum margin, the so-called &lt;strong&gt;optimal separating hyperplane&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&#34;optimal-separating-hyperplane&#34;&gt;Optimal Separating Hyperplane&lt;/h2&gt;
+
+&lt;p&gt;The optimal separating hyperplane is a separating hyperplane &lt;span  class=&#34;math&#34;&gt;\(H(w^*, b^*)\)&lt;/span&gt; having maximum margin:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \max_{w \in \mathbb{R}^n, b \in \mathbb{R}} \min_{x \in D} \bigg \{ \frac{|w \cdot x + b|}{||w||} \bigg \}  \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h1 id=&#34;lagrange-dual&#34;&gt;Lagrange Dual&lt;/h1&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Quantum Information - Part 1: Linear Algebra</title>
+      <link>https:w00zie.github.io/post/quantum_1_linalg/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
+      <guid>https:w00zie.github.io/post/quantum_1_linalg/</guid>
+      <description>&lt;p&gt;In this first post we&#39;ll give a brief introduction to the necessary linear algebra for Quantum Mechanics.&lt;/p&gt;
+
+&lt;h2 id=&#34;linear-algebra&#34;&gt;Linear Algebra&lt;/h2&gt;
+
+&lt;h3 id=&#34;vectors&#34;&gt;Vectors&lt;/h3&gt;
+
+&lt;p&gt;The basic objects of linear algebra are &lt;em&gt;vector spaces&lt;/em&gt;. The vector space of most interest in QM is $\mathbb{C}^n$, the space of all $n$-tuples of complex numbers $(z_1, \dots, z_n)$. The elements of a vector space are called &lt;em&gt;vectors&lt;/em&gt;. The standard quantum mechanical notation for a vector in a vector space is the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \lvert \psi \rangle \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;A &lt;em&gt;spanning set&lt;/em&gt; for a vector space is a set of vectors &lt;span  class=&#34;math&#34;&gt;\(\lvert v_1 \rangle, \dots, \lvert v_n \rangle\)&lt;/span&gt; such that any vector &lt;span  class=&#34;math&#34;&gt;\(\lvert v \rangle\)&lt;/span&gt; can be written as a linear combination &lt;span  class=&#34;math&#34;&gt;\(\lvert v \rangle = \sum_{i} a_i \lvert v_i \rangle\)&lt;/span&gt; of vectors in that set. For example, a spanning set for the vector space $\mathbb{C}^2$ is the set:&lt;/p&gt;
+
+&lt;p&gt;$$ \lvert v_1 \rangle =&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;\begin{bmatrix}
+1  \\
+0 \\
+\end{bmatrix}; \quad 
+\lvert v_2 \rangle = 
+\begin{bmatrix}
+0 \\
+1 \\
+\end{bmatrix}, $$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;since any vector&lt;/p&gt;
+
+&lt;p&gt;$$ \lvert v \rangle =&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;\begin{bmatrix}
+a_1 \\
+a_2 \\
+\end{bmatrix} $$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;can be expressed as a linear combination $\lvert v \rangle = a_1 \lvert v_1 \rangle + a_2 \lvert v_2 \rangle$ of the vectors $\lvert v_1 \rangle$ and $\lvert v_2 \rangle$.&lt;/p&gt;
+
+&lt;p&gt;Generally, a vector space may have many different spanning sets. A second spanning set for $\mathbb{C}^2$ is the set:&lt;/p&gt;
+
+&lt;p&gt;$$ \lvert v_1 \rangle = \frac{1}{\sqrt2}&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;\begin{bmatrix}
+1 \\
+1 \\
+\end{bmatrix}; \quad 
+\lvert v_2 \rangle = \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 \\
+-1 \\
+\end{bmatrix}, $$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A set of non-zero vectors $\lvert v_1 \rangle, \dots, \lvert v_n \rangle$ are &lt;em&gt;linearly dependent&lt;/em&gt; if there exists a set of complex numbers $a_1, \dots, a_n$ with $a_i \neq 0$ for at least one value of $i$, such that:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ a_1 \lvert v_1 \rangle + a_2 \lvert v_2 \rangle + \dots a_n \lvert v_n \rangle = 0 \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;A set of vectors is &lt;em&gt;linearly independent&lt;/em&gt; if it is not linearly dependent. A set of linearly independent vectors form a &lt;em&gt;basis&lt;/em&gt; for their relative vector space.&lt;/p&gt;
+
+&lt;h3 id=&#34;linear-operators-and-matrices&#34;&gt;Linear operators and matrices&lt;/h3&gt;
+
+&lt;p&gt;A &lt;em&gt;linear operator&lt;/em&gt; between vector spaces $V$ and $W$ is defined to be any function $A:V \to W$ which is linear in its inputs:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ A \bigg ( \sum_{i} a_i \lvert v_i \rangle \bigg ) = \sum_{i} a_i A(\lvert v_i \rangle)\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;And we just write $A \lvert v \rangle$ to denote this application.&lt;/p&gt;
+
+&lt;p&gt;The most convenient way to understand linear operators is in terms of their &lt;em&gt;matrix representations&lt;/em&gt;. In fact, the linear operator and matrix viewpoints turn out to be completely equivalent.&lt;/p&gt;
+
+&lt;p&gt;Suppose $\lvert v_1 \rangle, \dots, \lvert v_m \rangle$ is a basis for &lt;span  class=&#34;math&#34;&gt;\(V\)&lt;/span&gt; and &lt;span  class=&#34;math&#34;&gt;\(\lvert w_1 \rangle, \dots, \lvert w_n \rangle\)&lt;/span&gt; is a basis for &lt;span  class=&#34;math&#34;&gt;\(W\)&lt;/span&gt;. Then $\forall j = {1, \dots, m }$ there exists complex numbers $A_{1j}, \dots, A_{nj}$ such that:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ A \lvert v_j \rangle = \sum_{i} A_{ij} \lvert w_i \rangle \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;inner-products&#34;&gt;Inner products&lt;/h3&gt;
+
+&lt;p&gt;An &lt;em&gt;inner product&lt;/em&gt; is a function which takes as input two vectors $\lvert v \rangle$ and $\lvert w \rangle$ from a vector space and produces a complex number as output. The standard notation for the inner product is $\langle v \lvert w \rangle$ where $\langle v \rvert$ is the &lt;em&gt;dual vector&lt;/em&gt; to the vector $\lvert v \rangle$. A function $(\cdot , \cdot): V \times V \to \mathbb{C}$ is an inner product if it satisfies:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Linearity in the second argument:
+&lt;span  class=&#34;math&#34;&gt;\( \bigg (\lvert v \rangle, \sum_{i} \lambda_i \lvert w_i \rangle \bigg ) = \sum_{i} \lambda_{i} (\lvert v \rangle, \lvert w_i \rangle) \)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;$(\lvert v \rangle , \lvert w \rangle) = (\lvert w \rangle, \lvert v \rangle)^*$&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;$(\lvert v \rangle, \lvert v \rangle) \geq 0$ with equality iff $\lvert v \rangle = 0$.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For example $\mathbb{C}^n$ has an inner product defined by:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ ((y_1, \dots, y_n ), (z_1, \dots z_n)) = \sum_{i} y^*_{i}z_i \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;We call a vector space with an inner product an &lt;em&gt;inner product space&lt;/em&gt; or (usually) an &lt;strong&gt;Hilbert space&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;We define the &lt;em&gt;norm&lt;/em&gt; of a vector $\lvert v \rangle$ by:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ || \lvert v \rangle || = \sqrt{\langle v \lvert v \rangle}\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;For any non-zero vector $\lvert v \rangle$ we talk about &lt;em&gt;normalization&lt;/em&gt; or &lt;em&gt;normalized form&lt;/em&gt; the vector $\lvert v \rangle / || \lvert v \rangle ||$.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

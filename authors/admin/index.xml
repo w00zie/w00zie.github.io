@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Giovanni Bindi</title>
+    <link>https:w00zie.github.io/authors/admin/</link>
+      <atom:link href="https:w00zie.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
+    <description>Giovanni Bindi</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>https:w00zie.github.io</url>
+      <title>Giovanni Bindi</title>
+      <link>https:w00zie.github.io/authors/admin/</link>
+    </image>
+    
+    <item>
+      <title></title>
+      <link>https:w00zie.github.io/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https:w00zie.github.io/authors/admin/</guid>
+      <description>&lt;p&gt;This is my blog. I might write here some random stuff that interests me during my studies in Information Engineering. I&amp;rsquo;m not much of a coder but I may also embed some poorly-written python code along my posts. Hope you will find my content (sort of) interesting.&lt;/p&gt;
+
+&lt;p&gt;Ciao!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

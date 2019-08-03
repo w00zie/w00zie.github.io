@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Giovanni Bindi</title>
+    <link>https:w00zie.github.io/authors/open/</link>
+      <atom:link href="https:w00zie.github.io/authors/open/index.xml" rel="self" type="application/rss+xml" />
+    <description>Giovanni Bindi</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>https:w00zie.github.io</url>
+      <title>Giovanni Bindi</title>
+      <link>https:w00zie.github.io/authors/open/</link>
+    </image>
+    
+    <item>
+      <title></title>
+      <link>https:w00zie.github.io/authors/open/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https:w00zie.github.io/authors/open/</guid>
+      <description>
+
+&lt;h1 id=&#34;videos&#34;&gt;Videos&lt;/h1&gt;
+
+&lt;h2 id=&#34;english&#34;&gt;English&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=BCiZc0n6COY&amp;amp;list=PLruBu5BI5n4aFpG32iMbdWoRVAA-Vcso6&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Information Theory, Pattern Recognition and Neural Networks&lt;/strong&gt;&lt;/a&gt; - David McKay, &lt;em&gt;Cambridge&lt;/em&gt; (also &lt;a href=&#34;http://www.inference.org.uk/mackay/itprnn/book.html&#34; target=&#34;_blank&#34;&gt;book&lt;/a&gt; freely available online, thank you David!).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=2pWv7GOvuf0&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Reinforcement Learning&lt;/strong&gt;&lt;/a&gt; - David Silver, &lt;em&gt;UCL/DeepMind&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLqYmG7hTraZDNJre23vqCGIVpfZ_K2RZs&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Advanced Deep Learning &amp;amp; Reiforcement Learning&lt;/strong&gt;&lt;/a&gt; - Various, &lt;em&gt;UCL&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=dV80NAlEins&amp;amp;list=PLE6Wd9FR--EfW8dtjAuPoTuPcqmOV53Fu&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Deep Learning&lt;/strong&gt;&lt;/a&gt; - Nando de Freitas, &lt;em&gt;Oxford&lt;/em&gt; (check his channel for other courses!).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=JRZgW1YjCKk&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;General Relativity&lt;/strong&gt;&lt;/a&gt; - Leonard Susskind, &lt;em&gt;Stanford&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;italian&#34;&gt;Italian&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLN-ElNkwFy3WvkNxLNQobGy7Kb8gka2qE&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Fisica dei Sistemi Complessi e Teoria dell&amp;rsquo;Informazione&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Università di Firenze&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLynf_AiSbYthDiMOrX1r-f09dqHHMR6un&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Relatività Generale&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Random Physics&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/channel/UC09W0PH3jmNzMjNu12UPXwQ/videos&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Geometria Differenziale&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Università di Padova&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;tutorials-channels&#34;&gt;Tutorials &amp;amp; Channels&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PL9Hr9sNUjfsmEu1ZniY0XpHSzl5uihcXZ&#34; target=&#34;_blank&#34;&gt;Tensorflow tutorials&lt;/a&gt; - &lt;em&gt;Hvass Laboratories&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/channel/UCcIXc5mJsHVYTZR1maL5l9w/playlists&#34; target=&#34;_blank&#34;&gt;deeplearning.ai&lt;/a&gt; - &lt;em&gt;An YouTube channel run by Andrew Ng.&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
+
+&lt;h2 id=&#34;english-1&#34;&gt;English&lt;/h2&gt;
+
+&lt;h2 id=&#34;italian-1&#34;&gt;Italian&lt;/h2&gt;
+
+&lt;h1 id=&#34;podcasts&#34;&gt;Podcasts&lt;/h1&gt;
+
+&lt;h2 id=&#34;english-2&#34;&gt;English&lt;/h2&gt;
+
+&lt;h1 id=&#34;various&#34;&gt;Various&lt;/h1&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

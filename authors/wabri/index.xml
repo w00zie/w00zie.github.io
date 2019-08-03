@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Giovanni Bindi</title>
+    <link>https:w00zie.github.io/authors/wabri/</link>
+      <atom:link href="https:w00zie.github.io/authors/wabri/index.xml" rel="self" type="application/rss+xml" />
+    <description>Giovanni Bindi</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>https:w00zie.github.io</url>
+      <title>Giovanni Bindi</title>
+      <link>https:w00zie.github.io/authors/wabri/</link>
+    </image>
+    
+    <item>
+      <title></title>
+      <link>https:w00zie.github.io/authors/wabri/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https:w00zie.github.io/authors/wabri/</guid>
+      <description>&lt;p&gt;Gabriele is a friend of mine.&lt;/p&gt;
+
+&lt;p&gt;He is an active developer interested in different fields of Computer Science, make sure to check out his &lt;a href=&#34;wabri.github.io&#34; target=&#34;_blank&#34;&gt;blog&lt;/a&gt;!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
