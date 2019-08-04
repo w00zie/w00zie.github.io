@@ -105,10 +105,9 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
   
   
     
-    
   
   
-  <meta property="twitter:card" content="summary">
+  <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Giovanni Bindi">
   <meta property="og:url" content="https:w00zie.github.io/post/svm/">
@@ -273,7 +272,7 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/#people"><span>Interesting Stuff</span></a>
+          <a class="nav-link " href="/#people"><span>Interesting stuff</span></a>
         </li>
 
         
@@ -323,6 +322,10 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
 
         
 
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
         
 
       </ul>
@@ -510,7 +513,23 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
   <div class="article-container">
 
     <div class="article-style" itemprop="articleBody">
-      <p>One of the most known and widely used learning model is <strong>SVM</strong> (Support Vector Machine).</p>
+      
+
+
+
+
+
+<figure>
+
+  <a data-fancybox="" href="/img/svm/front.jpg" >
+
+<img src="/img/svm/front.jpg" >
+</a>
+
+</figure>
+
+
+<p>One of the most known and widely used learning model is <strong>SVM</strong> (Support Vector Machine).</p>
 
 <p>In this first post we are going to analyze the formal structure of the problem and we are going through the (simple) math needed to write down the SVM equations for both the linear and non-linear cases. Let's start with definitions.</p>
 
@@ -547,7 +566,27 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
 <p><span  class="math">\[ w \cdot x_i + b \geq 1, \hspace{15pt} \forall x_i \in P \\
  w \cdot x_j + b \leq -1, \hspace{15pt} \forall x_j \in N \]</span></p>
 
-<p><figure><img src="~/Documents/sito/academic/static/svm/linsep.jpg" alt="Linsep"></figure></p>
+
+
+
+
+
+
+<figure>
+
+  <a data-fancybox="" href="/img/svm/linsep.jpg" >
+
+<img src="/img/svm/linsep.jpg" >
+</a>
+
+
+<figcaption data-pre="Figure " data-post=":" >
+  <h4>Two linearly separable sets.</h4>
+  
+</figcaption>
+
+</figure>
+
 
 <hr>
 
@@ -611,7 +650,7 @@ the hyperplane with maximum margin, the so-called <strong>optimal separating hyp
 
 <hr>
 
-<h1 id="lagrange-dual">Lagrange Dual</h1>
+<h1 id="lagrange-dual">Lagrange dual</h1>
 
     </div>
 

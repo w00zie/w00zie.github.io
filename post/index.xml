@@ -5,7 +5,7 @@
     <link>https:w00zie.github.io/post/</link>
       <atom:link href="https:w00zie.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 02 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 04 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https:w00zie.github.io</url>
       <title>Posts</title>
@@ -13,11 +13,215 @@
     </image>
     
     <item>
+      <title>My Linux configuration</title>
+      <link>https:w00zie.github.io/post/dotfiles/</link>
+      <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https:w00zie.github.io/post/dotfiles/</guid>
+      <description>&lt;p&gt;In this post I will cover how I set up my laptop&#39;s linux config.&lt;/p&gt;
+
+&lt;h1 id=&#34;software-specifications&#34;&gt;Software specifications&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;OS&lt;/strong&gt;: Debian GNU/Linux Testing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WM&lt;/strong&gt;: &lt;a href=&#34;https://i3wm.org/&#34;&gt;i3wm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bar&lt;/strong&gt;: i3status&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Terminal&lt;/strong&gt;: &lt;a href=&#34;https://wiki.archlinux.org/index.php/Rxvt-unicode&#34;&gt;urxvt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Shell&lt;/strong&gt;: Bash&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File Manager&lt;/strong&gt;: Thunar (graphical), &lt;a href=&#34;https://ranger.github.io/&#34;&gt;ranger&lt;/a&gt; (terminal)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Launcher&lt;/strong&gt;: &lt;a href=&#34;https://github.com/davatorium/rofi&#34;&gt;rofi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Editor&lt;/strong&gt;: VSCode (graphical), vim (terminal)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Browser&lt;/strong&gt;: Firefox&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mail&lt;/strong&gt;: Thunderbird&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chat&lt;/strong&gt;: &lt;a href=&#34;https://github.com/ramboxapp/community-edition&#34;&gt;Rambox&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr&gt;
+
+&lt;h2 id=&#34;i3wm&#34;&gt;i3wm&lt;/h2&gt;
+
+&lt;p&gt;I&#39;m using &lt;a href=&#34;https://github.com/Airblader/i3&#34;&gt;i3-gaps&lt;/a&gt; with i3status.&lt;/p&gt;
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https:w00zie.github.io/img/linux/screen1.jpg&#34; &gt;
+
+&lt;img src=&#34;https:w00zie.github.io/img/linux/screen1.jpg&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+
+
+&lt;p&gt;My config is pretty simple, these are the main shortcuts I use:&lt;/p&gt;
+
+&lt;p&gt;Every key in this list is intented to be pressed along with &lt;code&gt;super&lt;/code&gt; (in my case the Windows) key. For example if you want to launch a terminal you hold &lt;code&gt;super+enter&lt;/code&gt;, if you want to move to workspace 2 you hold &lt;code&gt;super+2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;enter&lt;/code&gt;: new terminal&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;d&lt;/code&gt;: launch rofi&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;f&lt;/code&gt;: toggle fullscreen&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;w&lt;/code&gt;: toggle tabbed layout&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;shift+q&lt;/code&gt;: close focused window&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[1-10]&lt;/code&gt;: change workspace&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;shift+[1-10]&lt;/code&gt;: move focused window to selected workspace&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tab&lt;/code&gt;: move to the next workspace&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;shift+tab&lt;/code&gt;: move to the previous workspace&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&#39;m using fixed workspaces for certain apps, for example: if I want to launch Firefox I press &lt;code&gt;super+d&lt;/code&gt; and then type or select Firefox from rofi. The Firefox window will be automatically launched in the second workspace, as I imposed i3wm to contain the browser windows there.&lt;/p&gt;
+
+&lt;p&gt;As you can notice from the previous screenshot I added an icon to every workspace (browser to the second, file manager to the third, etc.) and you will need &lt;a href=&#34;https://fontawesome.com/&#34;&gt;fontawesome&lt;/a&gt; installed to replicate that.&lt;/p&gt;
+
+&lt;p&gt;You can dig my i3 config &lt;a href=&#34;https://github.com/w00zie/dotfiles/blob/master/i3/config&#34;&gt;here&lt;/a&gt; and my i3status config &lt;a href=&#34;https://github.com/w00zie/dotfiles/blob/master/i3status/config&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;thunar&#34;&gt;Thunar&lt;/h2&gt;
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https:w00zie.github.io/img/linux/screen2.jpg&#34; &gt;
+
+&lt;img src=&#34;https:w00zie.github.io/img/linux/screen2.jpg&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+
+
+&lt;p&gt;I&#39;m using the &lt;a href=&#34;https://github.com/ddnexus/equilux-theme&#34;&gt;Equilux Compact&lt;/a&gt; theme with the &lt;a href=&#34;https://numixproject.github.io/&#34;&gt;Numix&lt;/a&gt; icon pack.&lt;/p&gt;
+
+&lt;h2 id=&#34;urxvt--bash&#34;&gt;URxvt &amp;amp; Bash&lt;/h2&gt;
+
+&lt;p&gt;Take a look at my &lt;a href=&#34;https://github.com/w00zie/dotfiles/blob/master/.Xresources&#34;&gt;.Xresources&lt;/a&gt; and &lt;a href=&#34;https://github.com/w00zie/dotfiles/blob/master/.bashrc&#34;&gt;.bashrc&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https:w00zie.github.io/img/linux/screen3.jpg&#34; &gt;
+
+&lt;img src=&#34;https:w00zie.github.io/img/linux/screen3.jpg&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+
+
+&lt;h2 id=&#34;firefox&#34;&gt;Firefox&lt;/h2&gt;
+
+&lt;p&gt;These are the extensions I use:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://noscript.net/&#34;&gt;NoScript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/gorhill/uBlock&#34;&gt;uBlock Origin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://addons.mozilla.org/it/firefox/addon/cookie-autodelete/&#34;&gt;Cookie AutoDelete&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://addons.mozilla.org/it/firefox/addon/decentraleyes/&#34;&gt;Decentraleyes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://addons.mozilla.org/it/firefox/addon/https-everywhere/&#34;&gt;HTTPS Everywhere&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://addons.mozilla.org/it/firefox/addon/link-cleaner/&#34;&gt;Link Cleaner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://addons.mozilla.org/it/firefox/addon/privacy-badger17/?src=recommended&#34;&gt;Privacy Badger&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://addons.mozilla.org/it/firefox/addon/privacy-possum/&#34;&gt;Privacy Possum&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://addons.mozilla.org/it/firefox/addon/markdown-here/&#34;&gt;Markdown Here&lt;/a&gt; and sometimes &lt;a href=&#34;https://www.mailvelope.com/en&#34;&gt;Mailvelope&lt;/a&gt; for e-mails.
+&lt;br&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Plus I&#39;ve tweaked a bit Firefox&#39;s own config, but maybe I&#39;ll talk about that in a post.&lt;/p&gt;
+
+&lt;h2 id=&#34;vim&#34;&gt;Vim&lt;/h2&gt;
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https:w00zie.github.io/img/linux/screen5.jpg&#34; &gt;
+
+&lt;img src=&#34;https:w00zie.github.io/img/linux/screen5.jpg&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+
+
+&lt;p&gt;I&#39;m using a slightly modified version of this &lt;a href=&#34;https://github.com/amix/vimrc&#34;&gt;config&lt;/a&gt; (the &lt;em&gt;basic&lt;/em&gt; one) for &lt;a href=&#34;https://github.com/w00zie/dotfiles/blob/master/.vimrc&#34;&gt;my own&lt;/a&gt; usage.&lt;/p&gt;
+
+&lt;p&gt;Plugins installed:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ycm-core/YouCompleteMe&#34;&gt;YouCompleteMe&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tpope/vim-fugitive&#34;&gt;fugitive.vim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/godlygeek/tabular&#34;&gt;Tabular&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/plasticboy/vim-markdown&#34;&gt;vim-markdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/scrooloose/nerdtree&#34;&gt;NERD tree&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/nvie/vim-flake8&#34;&gt;flake8&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;visual-studio-code&#34;&gt;Visual Studio Code&lt;/h2&gt;
+
+
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https:w00zie.github.io/img/linux/screen4.jpg&#34; &gt;
+
+&lt;img src=&#34;https:w00zie.github.io/img/linux/screen4.jpg&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+
+
+&lt;p&gt;These are the extensions I&#39;ve installed:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.visualstudio.com/docs/remote/remote-overview&#34;&gt;Remote&lt;/a&gt; - this is a very nice feature if you want to remotely connect and edit files to an host without having to use vim. It may be one of the strongest reasons I&#39;m using a Microsoft product in my system.&lt;/li&gt;
+&lt;li&gt;Vim&lt;/li&gt;
+&lt;li&gt;Haskell Syntax Highliting&lt;/li&gt;
+&lt;li&gt;Markdown All in One&lt;/li&gt;
+&lt;li&gt;Python&lt;/li&gt;
+&lt;li&gt;C/C++&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
       <title>SVM from an optimization point of view</title>
       <link>https:w00zie.github.io/post/svm/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
       <guid>https:w00zie.github.io/post/svm/</guid>
-      <description>&lt;p&gt;One of the most known and widely used learning model is &lt;strong&gt;SVM&lt;/strong&gt; (Support Vector Machine).&lt;/p&gt;
+      <description>
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https:w00zie.github.io/img/svm/front.jpg&#34; &gt;
+
+&lt;img src=&#34;https:w00zie.github.io/img/svm/front.jpg&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+
+
+&lt;p&gt;One of the most known and widely used learning model is &lt;strong&gt;SVM&lt;/strong&gt; (Support Vector Machine).&lt;/p&gt;
 
 &lt;p&gt;In this first post we are going to analyze the formal structure of the problem and we are going through the (simple) math needed to write down the SVM equations for both the linear and non-linear cases. Let&#39;s start with definitions.&lt;/p&gt;
 
@@ -54,7 +258,27 @@
 &lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ w \cdot x_i + b \geq 1, \hspace{15pt} \forall x_i \in P \\
  w \cdot x_j + b \leq -1, \hspace{15pt} \forall x_j \in N \]&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;~/Documents/sito/academic/static/svm/linsep.jpg&#34; alt=&#34;Linsep&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https:w00zie.github.io/img/svm/linsep.jpg&#34; &gt;
+
+&lt;img src=&#34;https:w00zie.github.io/img/svm/linsep.jpg&#34; &gt;
+&lt;/a&gt;
+
+
+&lt;figcaption data-pre=&#34;Figure &#34; data-post=&#34;:&#34; &gt;
+  &lt;h4&gt;Two linearly separable sets.&lt;/h4&gt;
+  
+&lt;/figcaption&gt;
+
+&lt;/figure&gt;
+
 
 &lt;hr&gt;
 
@@ -118,7 +342,7 @@ the hyperplane with maximum margin, the so-called &lt;strong&gt;optimal separati
 
 &lt;hr&gt;
 
-&lt;h1 id=&#34;lagrange-dual&#34;&gt;Lagrange Dual&lt;/h1&gt;
+&lt;h1 id=&#34;lagrange-dual&#34;&gt;Lagrange dual&lt;/h1&gt;
 </description>
     </item>
     
@@ -127,7 +351,23 @@ the hyperplane with maximum margin, the so-called &lt;strong&gt;optimal separati
       <link>https:w00zie.github.io/post/quantum_1_linalg/</link>
       <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
       <guid>https:w00zie.github.io/post/quantum_1_linalg/</guid>
-      <description>&lt;p&gt;In this first post we&#39;ll give a brief introduction to the necessary linear algebra for Quantum Mechanics.&lt;/p&gt;
+      <description>
+
+
+
+
+
+&lt;figure&gt;
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https:w00zie.github.io/img/qm/bloch.jpg&#34; &gt;
+
+&lt;img src=&#34;https:w00zie.github.io/img/qm/bloch.jpg&#34; &gt;
+&lt;/a&gt;
+
+&lt;/figure&gt;
+
+
+&lt;p&gt;In this first post we&#39;ll give a brief introduction to the necessary linear algebra for Quantum Mechanics.&lt;/p&gt;
 
 &lt;h2 id=&#34;linear-algebra&#34;&gt;Linear Algebra&lt;/h2&gt;
 
