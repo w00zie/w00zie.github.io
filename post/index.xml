@@ -13,11 +13,11 @@
     </image>
     
     <item>
-      <title>My Linux configuration</title>
+      <title>Linux &#43; ThinkPad = ♥ </title>
       <link>https:w00zie.github.io/post/dotfiles/</link>
       <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
       <guid>https:w00zie.github.io/post/dotfiles/</guid>
-      <description>&lt;p&gt;In this post I will cover how I set up my laptop&#39;s linux config.&lt;/p&gt;
+      <description>&lt;p&gt;If you want to lurk other configs in the same style as mine take a look at the &lt;a href=&#34;https://www.reddit.com/r/unixporn/&#34;&gt;masters&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h1 id=&#34;software-specifications&#34;&gt;Software specifications&lt;/h1&gt;
 
@@ -39,7 +39,7 @@
 
 &lt;h2 id=&#34;i3wm&#34;&gt;i3wm&lt;/h2&gt;
 
-&lt;p&gt;I&#39;m using &lt;a href=&#34;https://github.com/Airblader/i3&#34;&gt;i3-gaps&lt;/a&gt; with i3status.&lt;/p&gt;
+&lt;p&gt;I&#39;m using &lt;a href=&#34;https://github.com/Airblader/i3&#34;&gt;i3-gaps&lt;/a&gt; with &lt;a href=&#34;https://i3wm.org/i3status/manpage.html&#34;&gt;i3status&lt;/a&gt; for window managing and &lt;a href=&#34;https://wiki.archlinux.org/index.php/LightDM&#34;&gt;lightdm&lt;/a&gt; as display manager.&lt;/p&gt;
 
 
 
@@ -69,8 +69,8 @@
 &lt;li&gt;&lt;code&gt;shift+q&lt;/code&gt;: close focused window&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;[1-10]&lt;/code&gt;: change workspace&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;shift+[1-10]&lt;/code&gt;: move focused window to selected workspace&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;tab&lt;/code&gt;: move to the next workspace&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;shift+tab&lt;/code&gt;: move to the previous workspace&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl+right&lt;/code&gt;: move to the next workspace&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ctrl+left&lt;/code&gt;: move to the previous workspace&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;I&#39;m using fixed workspaces for certain apps, for example: if I want to launch Firefox I press &lt;code&gt;super+d&lt;/code&gt; and then type or select Firefox from rofi. The Firefox window will be automatically launched in the second workspace, as I imposed i3wm to contain the browser windows there.&lt;/p&gt;
@@ -78,6 +78,8 @@
 &lt;p&gt;As you can notice from the previous screenshot I added an icon to every workspace (browser to the second, file manager to the third, etc.) and you will need &lt;a href=&#34;https://fontawesome.com/&#34;&gt;fontawesome&lt;/a&gt; installed to replicate that.&lt;/p&gt;
 
 &lt;p&gt;You can dig my i3 config &lt;a href=&#34;https://github.com/w00zie/dotfiles/blob/master/i3/config&#34;&gt;here&lt;/a&gt; and my i3status config &lt;a href=&#34;https://github.com/w00zie/dotfiles/blob/master/i3status/config&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you want to know more about i3wm take a look at &lt;a href=&#34;https://www.youtube.com/watch?v=j1I63wGcvU4&#34;&gt;this&lt;/a&gt; or &lt;a href=&#34;https://www.youtube.com/watch?v=1tAFXThjzsY&#34;&gt;this&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;thunar&#34;&gt;Thunar&lt;/h2&gt;
 
@@ -201,7 +203,7 @@
     </item>
     
     <item>
-      <title>SVM from an optimization point of view</title>
+      <title>SVM explained - Part 1: Binary linear classification.</title>
       <link>https:w00zie.github.io/post/svm/</link>
       <pubDate>Fri, 02 Aug 2019 00:00:00 +0000</pubDate>
       <guid>https:w00zie.github.io/post/svm/</guid>
@@ -221,17 +223,19 @@
 &lt;/figure&gt;
 
 
-&lt;p&gt;One of the most known and widely used learning model is &lt;strong&gt;SVM&lt;/strong&gt; (Support Vector Machine).&lt;/p&gt;
+&lt;p&gt;One of the most known and widely used learning model is &lt;strong&gt;SVM&lt;/strong&gt; (&lt;a href=&#34;https://en.wikipedia.org/wiki/Support-vector_machine&#34;&gt;Support Vector Machine&lt;/a&gt;).&lt;/p&gt;
 
-&lt;p&gt;In this first post we are going to analyze the formal structure of the problem and we are going through the (simple) math needed to write down the SVM equations for both the linear and non-linear cases. Let&#39;s start with definitions.&lt;/p&gt;
+&lt;p&gt;In this first post we are going to analyze the formal structure of the problem and we are going through the (simple) math needed to write down the SVM equations for linear case. In the next post we&#39;ll be extending this to the non-linear behaviour, introducing the concept of &lt;strong&gt;kernels&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let&#39;s start with definitions.&lt;/p&gt;
 
 &lt;h1 id=&#34;problem-structure&#34;&gt;Problem Structure&lt;/h1&gt;
 
-&lt;p&gt;We are given a set of couples, named $T$, which is going to be our training set.&lt;/p&gt;
+&lt;p&gt;We are given a set of couples, named $D$, which is going to be our data set.&lt;/p&gt;
 
-&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ T = \{ (x_i, y_i) : x_i \in X \subseteq \mathbb{R}^n, y_i \in Y, i=1,\dots,N \}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ D = \{ (x_i, y_i) : x_i \in X \subseteq \mathbb{R}^n, y_i \in Y, i=1,\dots,N \}\]&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;The $x_i$ are usually referred as &lt;em&gt;observations&lt;/em&gt; while the $y_i$ are called &lt;em&gt;labels&lt;/em&gt; or &lt;em&gt;targets&lt;/em&gt;. We have $|T|=N$ data points.&lt;/p&gt;
+&lt;p&gt;The $x_i$ are usually referred as &lt;em&gt;observations&lt;/em&gt; while the $y_i$ are called &lt;em&gt;labels&lt;/em&gt; or &lt;em&gt;targets&lt;/em&gt;. We have $|D|=N$ data points.&lt;/p&gt;
 
 &lt;p&gt;If $Y = \mathbb{R}$ we are dealing with &lt;em&gt;regression&lt;/em&gt;, otherwise with &lt;em&gt;classification&lt;/em&gt;. For this walkthrough we will deal with classification and so we&#39;ll adopt, without loss of generality, &lt;span  class=&#34;math&#34;&gt;\(Y = \{+1, -1\}\)&lt;/span&gt;.&lt;/p&gt;
 
@@ -241,8 +245,8 @@
 
 &lt;p&gt;This is the simplest case: we have two disjoint sets, namely $P$ and $N$:&lt;/p&gt;
 
-&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ P = \{ x_i \in T: y_i = +1 \} \\
-   N = \{ x_i \in T: y_i = -1 \} \]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ P = \{ x_i \in D: y_i = +1 \} \\
+   N = \{ x_i \in D: y_i = -1 \} \]&lt;/span&gt;&lt;/p&gt;
 
 &lt;p&gt;that are &lt;em&gt;linearly separable&lt;/em&gt;. This condition is expressed through the existence of a &lt;strong&gt;separating hyperplane&lt;/strong&gt;&lt;/p&gt;
 
@@ -338,11 +342,91 @@ the hyperplane with maximum margin, the so-called &lt;strong&gt;optimal separati
 
 &lt;p&gt;The optimal separating hyperplane is a separating hyperplane &lt;span  class=&#34;math&#34;&gt;\(H(w^*, b^*)\)&lt;/span&gt; having maximum margin:&lt;/p&gt;
 
-&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \max_{w \in \mathbb{R}^n, b \in \mathbb{R}} \min_{x \in D} \bigg \{ \frac{|w \cdot x + b|}{||w||} \bigg \}  \]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \max_{w \in \mathbb{R}^n, b \in \mathbb{R}} \gamma(w,b) = \max_{w \in \mathbb{R}^n, b \in \mathbb{R}} \min_{x \in D} \bigg \{ \frac{|w \cdot x + b|}{||w||} \bigg \}  \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;This thing does not look good: it&#39;s a &lt;em&gt;max-min&lt;/em&gt; problem. We can re-write this quantity as&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+\max_{\eta, w, b} \eta \\
+\hspace{60pt}\text{s.t } \hspace{5pt} \eta \leq \frac{|w \cdot x + b|}{||w||} \\
+\hspace{150pt}y(w \cdot x +b) \geq 1 \quad \quad \forall (x,y) \in D
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;since we are dealing with a &lt;strong&gt;finite&lt;/strong&gt; number of inequalities (this assures us that the optimal $\eta$ will satisfy the first constraint inequality as an equality).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This thing still does not look good&lt;/em&gt;: both the numerator and the denominator are &lt;em&gt;non-differentiable&lt;/em&gt;. It can be (quite easily) shown that the numerator $|w \cdot x + b|$ can be always set to $1$, leaving us with:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+\max_{\eta, w, b} \eta \\
+\hspace{35pt}\text{s.t } \hspace{5pt} \eta \leq \frac{1}{||w||} \\
+\hspace{150pt}y(w \cdot x +b) \geq 1 \quad \quad \forall (x,y) \in D
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can notice in the first constraint we passed from $|D|$ inequalities to only one, as we lost the dependance from $x$. We can re-write our problem as:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+\max_{w, b} \frac{1}{||w||} \\
+\hspace{120pt}\text{s.t } \hspace{10pt} y(w \cdot x +b) \geq 1 \quad \quad \forall (x,y) \in D
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;We get rid of the non-differentiability of the denominator by transforming this $max$ problem to a $min$ problem and applying a transformation to the objective function:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+\max_{w, b} \frac{1}{2}||w||^2 \\
+\hspace{110pt}\text{s.t } \hspace{10pt} y(w \cdot x +b) \geq 1 \quad \quad \forall (x,y) \in D
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;This is now a minimization problem of a quadratic function subject to linear constraints, this means that we can easily solve this!&lt;/p&gt;
 
 &lt;hr&gt;
 
-&lt;h1 id=&#34;lagrange-dual&#34;&gt;Lagrange dual&lt;/h1&gt;
+&lt;h1 id=&#34;lagrange-dual&#34;&gt;Lagrange Dual&lt;/h1&gt;
+
+&lt;p&gt;The final step towards the solution of this problem is imposing the optimality conditions in the &lt;a href=&#34;https://en.wikipedia.org/wiki/Duality_(optimization)&#34;&gt;Lagrange Dual&lt;/a&gt;. This is the &lt;em&gt;classical&lt;/em&gt; approach to the solution but it&#39;s not the only one.&lt;/p&gt;
+
+&lt;p&gt;Before doing that it&#39;s important to highlight that we can demonstrate the equivalency of the starting problem and the one we derived, but we are not going to do that.&lt;/p&gt;
+
+&lt;p&gt;Let&#39;s relax the constraints and embed them into the objective function: the problem associated with the Lagrangian dual is&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+\max_{\lambda \geq 0} \Big \{ \min_{w,b} \frac{1}{2} w^{\intercal}w + \sum_{i} \lambda_{i} \big[ 1 - y_i (w \cdot x_i + b) \big ] \Big \} = \\
+\max_{\lambda \geq 0} \sum_i \lambda_i + \min_{w,b} \frac{1}{2} w^{\intercal}w - \sum_i \lambda_i y_i (w \cdot x_i + b) \quad \quad (\alpha)
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;which is a convex unconstrained optimization problem. Let&#39;s leave the $max$ apart for a moment and concentrate on the internal $min$ problem, we know that the optimality conditions are the nullification of the gradient of the Lagrangian:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+\nabla \mathcal{L}(w,b) = \nabla_{w,b} \Big [ \min_{w,b} \frac{1}{2}w^\intercal w - \sum_i \lambda_i y_i(w \cdot x_i +b) \Big ] = 0
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;from which we have:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+\nabla_w \mathcal{L}(w,b) = 0 \implies w - \sum_i \lambda_i x_i y_i = 0 \implies \boxed{w = \sum_i \lambda_i y_i x_i \quad} (1) \\
+\nabla_b \mathcal{L}(w,b) = 0 \implies 0 - \sum_i \lambda_i y_i = 0 \implies \boxed{\sum_i \lambda_i y_i = 0} \hspace{35pt} (2)
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;We can now solve the $max$ problem. Plugging $(1)$ into $(\alpha)$ we obtain:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+\max_{\lambda \geq 0} \sum_i \lambda_i + \frac{1}{2}\sum_i \sum_j \lambda_i \lambda_j y_i y_j x_i^\intercal x_j - \sum_i \lambda_i y_i \Big (\sum_j \lambda_j y_j x_j^\intercal \Big )x_i - \sum_i \lambda_i y_i b \quad (\alpha^{&#39;})
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Substituting $(2)$ into $(\alpha^{&#39;})$ and switching signs (in order to pass from a $max$ to a $min$ problem) we have:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+\min_{\lambda \geq 0} \frac{1}{2} \sum_i \sum_j \lambda_i \lambda_j y_i y_j x_i^\intercal x_j - \sum_i \lambda_i \\
+\hspace{-75pt}{\text{s.t. } \sum_i \lambda_i y_i = 0}
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Setting &lt;span  class=&#34;math&#34;&gt;\(X = [y_1x_1 \dots y_nx_n]\)&lt;/span&gt;, &lt;span  class=&#34;math&#34;&gt;\(\lambda = [\lambda_1 \dots \lambda_n]^\intercal\)&lt;/span&gt; and &lt;span  class=&#34;math&#34;&gt;\(y = [y_1 \dots y_n]\)&lt;/span&gt; we can finally write this in a compact form:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+\min_{\lambda \geq 0} \frac{1}{2} \lambda^\intercal X^\intercal X \lambda - e^\intercal \lambda\\
+\hspace{-33pt}{\text{s.t } \hspace{10pt} \lambda \cdot y = 0}
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;hr&gt;
 </description>
     </item>
     
@@ -456,6 +540,19 @@ a_2 \\
 &lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ || \lvert v \rangle || = \sqrt{\langle v \lvert v \rangle}\]&lt;/span&gt;&lt;/p&gt;
 
 &lt;p&gt;For any non-zero vector $\lvert v \rangle$ we talk about &lt;em&gt;normalization&lt;/em&gt; or &lt;em&gt;normalized form&lt;/em&gt; the vector $\lvert v \rangle / || \lvert v \rangle ||$.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;With these conventions, the inner product on a Hilbert space can be given a convenient matrix representation. Let $\lvert w \rangle = \sum_i w_i \lvert i \rangle$ and &lt;span  class=&#34;math&#34;&gt;\(\lvert v \rangle = \sum_i v_i \lvert i \rangle\)&lt;/span&gt; be two vectors defined on an &lt;strong&gt;orthonormal&lt;/strong&gt; basis $\lvert i \rangle$ then, since $\langle i \lvert j \rangle = \delta_{ij}$ we have:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \langle v \lvert w \rangle = \Big ( \sum_i v_i \lvert i \rangle, \sum_j w_j\lvert j \rangle \Big ) = \sum_{ij} v_i^*w_j \delta_{ij} = \sum_i v_i^*w_i = \\
+\begin{bmatrix} v_1^* \dots, v_n^* \end{bmatrix} \begin{bmatrix} w_1 \\ \vdots \\ w_n \end{bmatrix}
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;That is, the inner product of two vectors is equal to the vector inner product between two matrix representations of those vectors, provided the representations are written with respect to the same orthonormal basis.&lt;/p&gt;
+
+&lt;p&gt;We also see that the dual vector $\langle v \lvert$ has a
+nice interpretation as the row vector whose components are complex conjugates of the corresponding components of the column vector representation of $\lvert v \rangle$.&lt;/p&gt;
 </description>
     </item>
     

@@ -28,9 +28,7 @@
   
     
   
-  <meta name="description" content="One of the most known and widely used learning model is SVM (Support Vector Machine).
-In this first post we are going to analyze the formal structure of the problem and we are going through the (simple) math needed to write down the SVM equations for both the linear and non-linear cases. Let&#39;s start with definitions.
-Problem Structure We are given a set of couples, named $T$, which is going to be our training set.">
+  <meta name="description" content="A mathematical tour of SVM: linear classification.">
 
   
   <link rel="alternate" hreflang="en-us" href="https:w00zie.github.io/post/svm/">
@@ -111,10 +109,8 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
   
   <meta property="og:site_name" content="Giovanni Bindi">
   <meta property="og:url" content="https:w00zie.github.io/post/svm/">
-  <meta property="og:title" content="SVM from an optimization point of view | Giovanni Bindi">
-  <meta property="og:description" content="One of the most known and widely used learning model is SVM (Support Vector Machine).
-In this first post we are going to analyze the formal structure of the problem and we are going through the (simple) math needed to write down the SVM equations for both the linear and non-linear cases. Let&#39;s start with definitions.
-Problem Structure We are given a set of couples, named $T$, which is going to be our training set."><meta property="og:image" content="https:w00zie.github.io">
+  <meta property="og:title" content="SVM explained - Part 1: Binary linear classification. | Giovanni Bindi">
+  <meta property="og:description" content="A mathematical tour of SVM: linear classification."><meta property="og:image" content="https:w00zie.github.io">
   <meta property="twitter:image" content="https:w00zie.github.io"><meta property="og:locale" content="en-us">
   
     
@@ -132,7 +128,7 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
 
 
 
-  <title>SVM from an optimization point of view | Giovanni Bindi</title>
+  <title>SVM explained - Part 1: Binary linear classification. | Giovanni Bindi</title>
 
 </head>
 
@@ -356,7 +352,7 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
   
   
 <div class="article-container pt-3">
-  <h1 itemprop="name">SVM from an optimization point of view</h1>
+  <h1 itemprop="name">SVM explained - Part 1: Binary linear classification.</h1>
 
   
 
@@ -388,7 +384,7 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    4 min read
+    7 min read
   </span>
   
 
@@ -412,7 +408,7 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https:w00zie.github.io/post/svm/&amp;text=SVM%20from%20an%20optimization%20point%20of%20view" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https:w00zie.github.io/post/svm/&amp;text=SVM%20explained%20-%20Part%201:%20Binary%20linear%20classification." target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -425,7 +421,7 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https:w00zie.github.io/post/svm/&amp;t=SVM%20from%20an%20optimization%20point%20of%20view" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https:w00zie.github.io/post/svm/&amp;t=SVM%20explained%20-%20Part%201:%20Binary%20linear%20classification." target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook-f"></i>
         </a>
       </li>
@@ -438,7 +434,7 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
       
       
       <li>
-        <a href="mailto:?subject=SVM%20from%20an%20optimization%20point%20of%20view&amp;body=https:w00zie.github.io/post/svm/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=SVM%20explained%20-%20Part%201:%20Binary%20linear%20classification.&amp;body=https:w00zie.github.io/post/svm/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -451,7 +447,7 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https:w00zie.github.io/post/svm/&amp;title=SVM%20from%20an%20optimization%20point%20of%20view" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https:w00zie.github.io/post/svm/&amp;title=SVM%20explained%20-%20Part%201:%20Binary%20linear%20classification." target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -464,7 +460,7 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=SVM%20from%20an%20optimization%20point%20of%20view%20https:w00zie.github.io/post/svm/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=SVM%20explained%20-%20Part%201:%20Binary%20linear%20classification.%20https:w00zie.github.io/post/svm/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -477,7 +473,7 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https:w00zie.github.io/post/svm/&amp;title=SVM%20from%20an%20optimization%20point%20of%20view" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https:w00zie.github.io/post/svm/&amp;title=SVM%20explained%20-%20Part%201:%20Binary%20linear%20classification." target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -529,17 +525,19 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
 </figure>
 
 
-<p>One of the most known and widely used learning model is <strong>SVM</strong> (Support Vector Machine).</p>
+<p>One of the most known and widely used learning model is <strong>SVM</strong> (<a href="https://en.wikipedia.org/wiki/Support-vector_machine">Support Vector Machine</a>).</p>
 
-<p>In this first post we are going to analyze the formal structure of the problem and we are going through the (simple) math needed to write down the SVM equations for both the linear and non-linear cases. Let's start with definitions.</p>
+<p>In this first post we are going to analyze the formal structure of the problem and we are going through the (simple) math needed to write down the SVM equations for linear case. In the next post we'll be extending this to the non-linear behaviour, introducing the concept of <strong>kernels</strong>.</p>
+
+<p>Let's start with definitions.</p>
 
 <h1 id="problem-structure">Problem Structure</h1>
 
-<p>We are given a set of couples, named $T$, which is going to be our training set.</p>
+<p>We are given a set of couples, named $D$, which is going to be our data set.</p>
 
-<p><span  class="math">\[ T = \{ (x_i, y_i) : x_i \in X \subseteq \mathbb{R}^n, y_i \in Y, i=1,\dots,N \}\]</span></p>
+<p><span  class="math">\[ D = \{ (x_i, y_i) : x_i \in X \subseteq \mathbb{R}^n, y_i \in Y, i=1,\dots,N \}\]</span></p>
 
-<p>The $x_i$ are usually referred as <em>observations</em> while the $y_i$ are called <em>labels</em> or <em>targets</em>. We have $|T|=N$ data points.</p>
+<p>The $x_i$ are usually referred as <em>observations</em> while the $y_i$ are called <em>labels</em> or <em>targets</em>. We have $|D|=N$ data points.</p>
 
 <p>If $Y = \mathbb{R}$ we are dealing with <em>regression</em>, otherwise with <em>classification</em>. For this walkthrough we will deal with classification and so we'll adopt, without loss of generality, <span  class="math">\(Y = \{+1, -1\}\)</span>.</p>
 
@@ -549,8 +547,8 @@ Problem Structure We are given a set of couples, named $T$, which is going to be
 
 <p>This is the simplest case: we have two disjoint sets, namely $P$ and $N$:</p>
 
-<p><span  class="math">\[ P = \{ x_i \in T: y_i = +1 \} \\
-   N = \{ x_i \in T: y_i = -1 \} \]</span></p>
+<p><span  class="math">\[ P = \{ x_i \in D: y_i = +1 \} \\
+   N = \{ x_i \in D: y_i = -1 \} \]</span></p>
 
 <p>that are <em>linearly separable</em>. This condition is expressed through the existence of a <strong>separating hyperplane</strong></p>
 
@@ -646,11 +644,91 @@ the hyperplane with maximum margin, the so-called <strong>optimal separating hyp
 
 <p>The optimal separating hyperplane is a separating hyperplane <span  class="math">\(H(w^*, b^*)\)</span> having maximum margin:</p>
 
-<p><span  class="math">\[ \max_{w \in \mathbb{R}^n, b \in \mathbb{R}} \min_{x \in D} \bigg \{ \frac{|w \cdot x + b|}{||w||} \bigg \}  \]</span></p>
+<p><span  class="math">\[ \max_{w \in \mathbb{R}^n, b \in \mathbb{R}} \gamma(w,b) = \max_{w \in \mathbb{R}^n, b \in \mathbb{R}} \min_{x \in D} \bigg \{ \frac{|w \cdot x + b|}{||w||} \bigg \}  \]</span></p>
+
+<p>This thing does not look good: it's a <em>max-min</em> problem. We can re-write this quantity as</p>
+
+<p><span  class="math">\[
+\max_{\eta, w, b} \eta \\
+\hspace{60pt}\text{s.t } \hspace{5pt} \eta \leq \frac{|w \cdot x + b|}{||w||} \\
+\hspace{150pt}y(w \cdot x +b) \geq 1 \quad \quad \forall (x,y) \in D
+\]</span></p>
+
+<p>since we are dealing with a <strong>finite</strong> number of inequalities (this assures us that the optimal $\eta$ will satisfy the first constraint inequality as an equality).</p>
+
+<p><em>This thing still does not look good</em>: both the numerator and the denominator are <em>non-differentiable</em>. It can be (quite easily) shown that the numerator $|w \cdot x + b|$ can be always set to $1$, leaving us with:</p>
+
+<p><span  class="math">\[
+\max_{\eta, w, b} \eta \\
+\hspace{35pt}\text{s.t } \hspace{5pt} \eta \leq \frac{1}{||w||} \\
+\hspace{150pt}y(w \cdot x +b) \geq 1 \quad \quad \forall (x,y) \in D
+\]</span></p>
+
+<p>As you can notice in the first constraint we passed from $|D|$ inequalities to only one, as we lost the dependance from $x$. We can re-write our problem as:</p>
+
+<p><span  class="math">\[
+\max_{w, b} \frac{1}{||w||} \\
+\hspace{120pt}\text{s.t } \hspace{10pt} y(w \cdot x +b) \geq 1 \quad \quad \forall (x,y) \in D
+\]</span></p>
+
+<p>We get rid of the non-differentiability of the denominator by transforming this $max$ problem to a $min$ problem and applying a transformation to the objective function:</p>
+
+<p><span  class="math">\[
+\max_{w, b} \frac{1}{2}||w||^2 \\
+\hspace{110pt}\text{s.t } \hspace{10pt} y(w \cdot x +b) \geq 1 \quad \quad \forall (x,y) \in D
+\]</span></p>
+
+<p>This is now a minimization problem of a quadratic function subject to linear constraints, this means that we can easily solve this!</p>
 
 <hr>
 
-<h1 id="lagrange-dual">Lagrange dual</h1>
+<h1 id="lagrange-dual">Lagrange Dual</h1>
+
+<p>The final step towards the solution of this problem is imposing the optimality conditions in the <a href="https://en.wikipedia.org/wiki/Duality_(optimization)">Lagrange Dual</a>. This is the <em>classical</em> approach to the solution but it's not the only one.</p>
+
+<p>Before doing that it's important to highlight that we can demonstrate the equivalency of the starting problem and the one we derived, but we are not going to do that.</p>
+
+<p>Let's relax the constraints and embed them into the objective function: the problem associated with the Lagrangian dual is</p>
+
+<p><span  class="math">\[
+\max_{\lambda \geq 0} \Big \{ \min_{w,b} \frac{1}{2} w^{\intercal}w + \sum_{i} \lambda_{i} \big[ 1 - y_i (w \cdot x_i + b) \big ] \Big \} = \\
+\max_{\lambda \geq 0} \sum_i \lambda_i + \min_{w,b} \frac{1}{2} w^{\intercal}w - \sum_i \lambda_i y_i (w \cdot x_i + b) \quad \quad (\alpha)
+\]</span></p>
+
+<p>which is a convex unconstrained optimization problem. Let's leave the $max$ apart for a moment and concentrate on the internal $min$ problem, we know that the optimality conditions are the nullification of the gradient of the Lagrangian:</p>
+
+<p><span  class="math">\[
+\nabla \mathcal{L}(w,b) = \nabla_{w,b} \Big [ \min_{w,b} \frac{1}{2}w^\intercal w - \sum_i \lambda_i y_i(w \cdot x_i +b) \Big ] = 0
+\]</span></p>
+
+<p>from which we have:</p>
+
+<p><span  class="math">\[
+\nabla_w \mathcal{L}(w,b) = 0 \implies w - \sum_i \lambda_i x_i y_i = 0 \implies \boxed{w = \sum_i \lambda_i y_i x_i \quad} (1) \\
+\nabla_b \mathcal{L}(w,b) = 0 \implies 0 - \sum_i \lambda_i y_i = 0 \implies \boxed{\sum_i \lambda_i y_i = 0} \hspace{35pt} (2)
+\]</span></p>
+
+<p>We can now solve the $max$ problem. Plugging $(1)$ into $(\alpha)$ we obtain:</p>
+
+<p><span  class="math">\[
+\max_{\lambda \geq 0} \sum_i \lambda_i + \frac{1}{2}\sum_i \sum_j \lambda_i \lambda_j y_i y_j x_i^\intercal x_j - \sum_i \lambda_i y_i \Big (\sum_j \lambda_j y_j x_j^\intercal \Big )x_i - \sum_i \lambda_i y_i b \quad (\alpha^{'})
+\]</span></p>
+
+<p>Substituting $(2)$ into $(\alpha^{'})$ and switching signs (in order to pass from a $max$ to a $min$ problem) we have:</p>
+
+<p><span  class="math">\[
+\min_{\lambda \geq 0} \frac{1}{2} \sum_i \sum_j \lambda_i \lambda_j y_i y_j x_i^\intercal x_j - \sum_i \lambda_i \\
+\hspace{-75pt}{\text{s.t. } \sum_i \lambda_i y_i = 0}
+\]</span></p>
+
+<p>Setting <span  class="math">\(X = [y_1x_1 \dots y_nx_n]\)</span>, <span  class="math">\(\lambda = [\lambda_1 \dots \lambda_n]^\intercal\)</span> and <span  class="math">\(y = [y_1 \dots y_n]\)</span> we can finally write this in a compact form:</p>
+
+<p><span  class="math">\[
+\min_{\lambda \geq 0} \frac{1}{2} \lambda^\intercal X^\intercal X \lambda - e^\intercal \lambda\\
+\hspace{-33pt}{\text{s.t } \hspace{10pt} \lambda \cdot y = 0}
+\]</span></p>
+
+<hr>
 
     </div>
 

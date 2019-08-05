@@ -28,8 +28,7 @@
   
     
   
-  <meta name="description" content="In this first post we&#39;ll give a brief introduction to the necessary linear algebra for Quantum Mechanics.
-Linear Algebra Vectors The basic objects of linear algebra are vector spaces. The vector space of most interest in QM is $\mathbb{C}^n$, the space of all $n$-tuples of complex numbers $(z_1, \dots, z_n)$. The elements of a vector space are called vectors. The standard quantum mechanical notation for a vector in a vector space is the following:">
+  <meta name="description" content="This is the first chapter of a series of articles about Quantum Information. We quickly talk about linear algebra here.">
 
   
   <link rel="alternate" hreflang="en-us" href="https:w00zie.github.io/post/quantum_1_linalg/">
@@ -111,8 +110,7 @@ Linear Algebra Vectors The basic objects of linear algebra are vector spaces. Th
   <meta property="og:site_name" content="Giovanni Bindi">
   <meta property="og:url" content="https:w00zie.github.io/post/quantum_1_linalg/">
   <meta property="og:title" content="Quantum Information - Part 1: Linear Algebra | Giovanni Bindi">
-  <meta property="og:description" content="In this first post we&#39;ll give a brief introduction to the necessary linear algebra for Quantum Mechanics.
-Linear Algebra Vectors The basic objects of linear algebra are vector spaces. The vector space of most interest in QM is $\mathbb{C}^n$, the space of all $n$-tuples of complex numbers $(z_1, \dots, z_n)$. The elements of a vector space are called vectors. The standard quantum mechanical notation for a vector in a vector space is the following:"><meta property="og:image" content="https:w00zie.github.io">
+  <meta property="og:description" content="This is the first chapter of a series of articles about Quantum Information. We quickly talk about linear algebra here."><meta property="og:image" content="https:w00zie.github.io">
   <meta property="twitter:image" content="https:w00zie.github.io"><meta property="og:locale" content="en-us">
   
     
@@ -386,7 +384,7 @@ Linear Algebra Vectors The basic objects of linear algebra are vector spaces. Th
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    4 min read
+    5 min read
   </span>
   
 
@@ -616,6 +614,19 @@ a_2 \\
 <p><span  class="math">\[ || \lvert v \rangle || = \sqrt{\langle v \lvert v \rangle}\]</span></p>
 
 <p>For any non-zero vector $\lvert v \rangle$ we talk about <em>normalization</em> or <em>normalized form</em> the vector $\lvert v \rangle / || \lvert v \rangle ||$.</p>
+
+<hr>
+
+<p>With these conventions, the inner product on a Hilbert space can be given a convenient matrix representation. Let $\lvert w \rangle = \sum_i w_i \lvert i \rangle$ and <span  class="math">\(\lvert v \rangle = \sum_i v_i \lvert i \rangle\)</span> be two vectors defined on an <strong>orthonormal</strong> basis $\lvert i \rangle$ then, since $\langle i \lvert j \rangle = \delta_{ij}$ we have:</p>
+
+<p><span  class="math">\[ \langle v \lvert w \rangle = \Big ( \sum_i v_i \lvert i \rangle, \sum_j w_j\lvert j \rangle \Big ) = \sum_{ij} v_i^*w_j \delta_{ij} = \sum_i v_i^*w_i = \\
+\begin{bmatrix} v_1^* \dots, v_n^* \end{bmatrix} \begin{bmatrix} w_1 \\ \vdots \\ w_n \end{bmatrix}
+\]</span></p>
+
+<p>That is, the inner product of two vectors is equal to the vector inner product between two matrix representations of those vectors, provided the representations are written with respect to the same orthonormal basis.</p>
+
+<p>We also see that the dual vector $\langle v \lvert$ has a
+nice interpretation as the row vector whose components are complex conjugates of the corresponding components of the column vector representation of $\lvert v \rangle$.</p>
 
     </div>
 
