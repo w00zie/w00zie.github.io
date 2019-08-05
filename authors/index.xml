@@ -37,12 +37,14 @@
 &lt;h3 id=&#34;english&#34;&gt;English&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.deeplearningbook.org/&#34; target=&#34;_blank&#34;&gt;Deep Learning&lt;/a&gt; - &lt;em&gt;Ian Goodfellow, Yoshua Bengio, Aaron Courville&lt;/em&gt;, MIT press, 2016.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.inference.org.uk/mackay/itprnn/book.html&#34; target=&#34;_blank&#34;&gt;Information Theory, Pattern Recognition and Neural Networks&lt;/a&gt; - &lt;em&gt;David McKay&lt;/em&gt;, Cambridge University Press, 2003.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf&#34; target=&#34;_blank&#34;&gt;Reinforcement Learning, an Introduction&lt;/a&gt; - &lt;em&gt;Richard S. Sutton, Andrew G. Barto&lt;/em&gt;, MIT press, 2015.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://faculty.marshall.usc.edu/gareth-james/ISL/&#34; target=&#34;_blank&#34;&gt;An Introduction to Statistical Learning&lt;/a&gt; - &lt;em&gt;Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani&lt;/em&gt;, Springer, 2017.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://web.stanford.edu/~hastie/Papers/ESLII.pdf&#34; target=&#34;_blank&#34;&gt;The Elements of Statistical Learning&lt;/a&gt; - &lt;em&gt;Trevor Hastie, Robert Tibshirani, Jerome Friedman&lt;/em&gt;, Springer, 2008.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://jakevdp.github.io/PythonDataScienceHandbook/&#34; target=&#34;_blank&#34;&gt;Python Data Science Handbook&lt;/a&gt; - &lt;em&gt;Jake VanderPlas&lt;/em&gt;, O&amp;rsquo;Reilly, 2016.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.deeplearningbook.org/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Deep Learning&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Ian Goodfellow, Yoshua Bengio, Aaron Courville&lt;/em&gt;, MIT press, 2016.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.inference.org.uk/mackay/itprnn/book.html&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Information Theory, Pattern Recognition and Neural Networks&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;David McKay&lt;/em&gt;, Cambridge University Press, 2003.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Reinforcement Learning, an Introduction&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Richard S. Sutton, Andrew G. Barto&lt;/em&gt;, MIT press, 2015.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://neuralnetworksanddeeplearning.com/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Neural Networks and Deep Learning&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Michael A. Nielsen&lt;/em&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, 2015.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://faculty.marshall.usc.edu/gareth-james/ISL/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;An Introduction to Statistical Learning&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani&lt;/em&gt;, Springer, 2017.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.stanford.edu/~hastie/Papers/ESLII.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;The Elements of Statistical Learning&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Trevor Hastie, Robert Tibshirani, Jerome Friedman&lt;/em&gt;, Springer, 2009.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://web4.cs.ucl.ac.uk/staff/D.Barber/pmwiki/pmwiki.php?n=Brml.HomePage&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Bayesian Reasoning and Machine Learning&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;David Barber&lt;/em&gt;, Cambridge, 2012.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://jakevdp.github.io/PythonDataScienceHandbook/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Python Data Science Handbook&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Jake VanderPlas&lt;/em&gt;, O&amp;rsquo;Reilly, 2016.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;italian&#34;&gt;Italian&lt;/h3&gt;
@@ -60,10 +62,19 @@
 &lt;h2 id=&#34;scientific-1&#34;&gt;Scientific&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www-e.uni-magdeburg.de/mertens/pubs/cise.pdf&#34; target=&#34;_blank&#34;&gt;Computational Complexity for Physicists&lt;/a&gt; - &lt;em&gt;Stephan Mertens&lt;/em&gt;, 2002.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www-e.uni-magdeburg.de/mertens/pubs/cise.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Computational Complexity for Physicists&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Stephan Mertens&lt;/em&gt;, 2002.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;non-scientific-1&#34;&gt;Non-scientific&lt;/h2&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;http://michaelnielsen.org/&#34; target=&#34;_blank&#34;&gt;Michael Nielsen&lt;/a&gt; is also a co-author of a beautiful book: Quantum Computation &amp;amp; Quantum Information.
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;^&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
     </item>
     
