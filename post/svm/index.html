@@ -384,7 +384,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    7 min read
+    8 min read
   </span>
   
 
@@ -674,11 +674,11 @@ the hyperplane with maximum margin, the so-called <strong>optimal separating hyp
 <p>We get rid of the non-differentiability of the denominator by transforming this $max$ problem to a $min$ problem and applying a transformation to the objective function:</p>
 
 <p><span  class="math">\[
-\max_{w, b} \frac{1}{2}||w||^2 \\
-\hspace{110pt}\text{s.t } \hspace{10pt} y(w \cdot x +b) \geq 1 \quad \quad \forall (x,y) \in D
+\max_{w, b} \frac{1}{2}||w||^2 \qquad \qquad (P)\\
+\hspace{55pt}\text{s.t } \hspace{10pt} y(w \cdot x +b) \geq 1 \quad \quad \forall (x,y) \in D
 \]</span></p>
 
-<p>This is now a minimization problem of a quadratic function subject to linear constraints, this means that we can easily solve this!</p>
+<p>This is now a minimization problem of a quadratic function subject to linear constraints, which means that we can easily solve this. The difficulties we encounter are related to the <em>dimensions</em> of the problem. Usually SVMs are <a href="https://pdfs.semanticscholar.org/d1fa/8485ad749d51e7470d801bc1931706597601.pdf">trained</a> with a well-known technique: <a href="http://web.cs.iastate.edu/~honavar/smo-svm.pdf">Sequential Minimal Optimization</a>.</p>
 
 <hr>
 
@@ -724,11 +724,35 @@ the hyperplane with maximum margin, the so-called <strong>optimal separating hyp
 <p>Setting <span  class="math">\(X = [y_1x_1 \dots y_nx_n]\)</span>, <span  class="math">\(\lambda = [\lambda_1 \dots \lambda_n]^\intercal\)</span> and <span  class="math">\(y = [y_1 \dots y_n]\)</span> we can finally write this in a compact form:</p>
 
 <p><span  class="math">\[
-\min_{\lambda \geq 0} \frac{1}{2} \lambda^\intercal X^\intercal X \lambda - e^\intercal \lambda\\
-\hspace{-33pt}{\text{s.t } \hspace{10pt} \lambda \cdot y = 0}
+\min_{\lambda \geq 0} \frac{1}{2} \lambda^\intercal X^\intercal X \lambda - e^\intercal \lambda \qquad \qquad (L)\\
+\hspace{-88pt}{\text{s.t } \hspace{10pt} \lambda ^\intercal y = 0}
 \]</span></p>
 
+<p>where <span  class="math">\(e = [1 \dots 1]\)</span>.</p>
+
 <hr>
+
+<h1 id="solution">Solution</h1>
+
+<p>We can now either solve problem $(P)$ or $(L)$ indifferently. Suppose we solved problem $(L)$, obtaining a <span  class="math">\(\lambda^*\)</span>. We can retrieve <span  class="math">\(w^*\)</span> from $(1)$ as</p>
+
+<p><span  class="math">\[
+w^* = \sum_i \lambda_i x_i y_i
+\]</span></p>
+
+<p>An important fact, that comes from the KKT complementary slackness, is that the solution $w^*$ depends only on the so-called <strong>support vectors</strong> <span  class="math">\(x_i\)</span>, whose correspondent multipliers <span  class="math">\(\lambda_i^*\)</span> are not null.</p>
+
+<p>Once computed <span  class="math">\(w^*\)</span>, by considering any multiplier <span  class="math">\(\lambda_i^*>0\)</span> the scalar $b^*$ can be determined by means of the corresponding complementarity condition</p>
+
+<p><span  class="math">\[
+\lambda_i^* \big [ y_i(w^* \cdot x_i + b^*) - 1 \big ] = 0, \qquad \qquad i=1, \dots, n
+\]</span></p>
+
+<p>When we'll be in possess of a new data point $\hat{x}$ we can decide if $\hat{x} \in P$ or $\hat{x} \in N$ by applying the <em>decision function</em> $d(\cdot)$:</p>
+
+<p><span  class="math">\[\boxed{
+d(\hat{x}) = sgn(w^* \cdot \hat{x} + b^*) = sgn \Bigg (\sum_i^n \lambda_i^* y_i x_i \cdot \hat{x} + b^* \Bigg )}
+\]</span></p>
 
     </div>
 
