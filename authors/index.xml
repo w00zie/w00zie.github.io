@@ -32,9 +32,7 @@
 
 &lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
 
-&lt;h2 id=&#34;scientific&#34;&gt;Scientific&lt;/h2&gt;
-
-&lt;h3 id=&#34;english&#34;&gt;English&lt;/h3&gt;
+&lt;h2 id=&#34;english&#34;&gt;English&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.deeplearningbook.org/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Deep Learning&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Ian Goodfellow, Yoshua Bengio, Aaron Courville&lt;/em&gt;, MIT press, 2016.&lt;/li&gt;
@@ -47,25 +45,18 @@
 &lt;li&gt;&lt;a href=&#34;https://jakevdp.github.io/PythonDataScienceHandbook/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Python Data Science Handbook&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Jake VanderPlas&lt;/em&gt;, O&amp;rsquo;Reilly, 2016.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;italian&#34;&gt;Italian&lt;/h3&gt;
-
-&lt;h2 id=&#34;non-scientific&#34;&gt;Non-scientific&lt;/h2&gt;
-
-&lt;h3 id=&#34;english-1&#34;&gt;English&lt;/h3&gt;
-
-&lt;h3 id=&#34;italian-1&#34;&gt;Italian&lt;/h3&gt;
+&lt;h2 id=&#34;italian&#34;&gt;Italian&lt;/h2&gt;
 
 &lt;hr /&gt;
 
 &lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
 
-&lt;h2 id=&#34;scientific-1&#34;&gt;Scientific&lt;/h2&gt;
-
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://paperswithcode.com/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Papers with code&lt;/strong&gt;&lt;/a&gt; - A site where you can dig among papers (in the field of ML) with open source code officialy released.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www-e.uni-magdeburg.de/mertens/pubs/cise.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Computational Complexity for Physicists&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Stephan Mertens&lt;/em&gt;, 2002.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;non-scientific-1&#34;&gt;Non-scientific&lt;/h2&gt;
+&lt;h1 id=&#34;non-scientific&#34;&gt;Non-scientific&lt;/h1&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 
 &lt;hr /&gt;
@@ -85,9 +76,7 @@
       <guid>https:w00zie.github.io/authors/open/</guid>
       <description>
 
-&lt;h1 id=&#34;courses&#34;&gt;Courses&lt;/h1&gt;
-
-&lt;h2 id=&#34;english&#34;&gt;English&lt;/h2&gt;
+&lt;h1 id=&#34;english&#34;&gt;English&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=BCiZc0n6COY&amp;amp;list=PLruBu5BI5n4aFpG32iMbdWoRVAA-Vcso6&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Information Theory, Pattern Recognition and Neural Networks&lt;/strong&gt;&lt;/a&gt; - David McKay, &lt;em&gt;Cambridge&lt;/em&gt; (also &lt;a href=&#34;http://www.inference.org.uk/mackay/itprnn/book.html&#34; target=&#34;_blank&#34;&gt;book&lt;/a&gt; freely available online, thank you David!).&lt;/li&gt;
@@ -95,9 +84,10 @@
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLqYmG7hTraZDNJre23vqCGIVpfZ_K2RZs&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Advanced Deep Learning &amp;amp; Reiforcement Learning&lt;/strong&gt;&lt;/a&gt; - Various, &lt;em&gt;UCL&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=dV80NAlEins&amp;amp;list=PLE6Wd9FR--EfW8dtjAuPoTuPcqmOV53Fu&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Deep Learning&lt;/strong&gt;&lt;/a&gt; - Nando de Freitas, &lt;em&gt;Oxford&lt;/em&gt; (check his channel for other courses!).&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=JRZgW1YjCKk&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;General Relativity&lt;/strong&gt;&lt;/a&gt; - Leonard Susskind, &lt;em&gt;Stanford&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLUl4u3cNGP61-9PEhRognw5vryrSEVLPr&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Quantum Mechanics&lt;/strong&gt;&lt;/a&gt; - Allan Adams, &lt;em&gt;MIT&lt;/em&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;italian&#34;&gt;Italian&lt;/h2&gt;
+&lt;h1 id=&#34;italian&#34;&gt;Italian&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLN-ElNkwFy3WvkNxLNQobGy7Kb8gka2qE&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Fisica dei Sistemi Complessi e Teoria dell&amp;rsquo;Informazione&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Università di Firenze&lt;/em&gt;.&lt;/li&gt;
@@ -105,11 +95,13 @@
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/channel/UC09W0PH3jmNzMjNu12UPXwQ/videos&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Geometria Differenziale&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Università di Padova&lt;/em&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;tutorials-channels&#34;&gt;Tutorials &amp;amp; Channels&lt;/h3&gt;
+&lt;h1 id=&#34;tutorials-channels&#34;&gt;Tutorials &amp;amp; Channels&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PL9Hr9sNUjfsmEu1ZniY0XpHSzl5uihcXZ&#34; target=&#34;_blank&#34;&gt;Tensorflow tutorials&lt;/a&gt; - &lt;em&gt;Hvass Laboratories&lt;/em&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/channel/UCcIXc5mJsHVYTZR1maL5l9w/playlists&#34; target=&#34;_blank&#34;&gt;deeplearning.ai&lt;/a&gt; - &lt;em&gt;An YouTube channel run by Andrew Ng.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;3Blue1Brown&lt;/strong&gt;&lt;/a&gt; - One of the best scientific YouTube channels out there. Both contents and visualization techniques are stunningly good.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/user/Computerphile&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Computerphile&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&#34;https://www.youtube.com/user/numberphile/videos&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Numberphile&lt;/strong&gt;&lt;/a&gt; - By their definitions: the first one is a channel on &lt;em&gt;videos all about computers and computer stuff&lt;/em&gt; and the second one is &lt;em&gt;videos about numbers - it&amp;rsquo;s that simple&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PL9Hr9sNUjfsmEu1ZniY0XpHSzl5uihcXZ&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Tensorflow tutorials&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Hvass Laboratories&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/channel/UCcIXc5mJsHVYTZR1maL5l9w/playlists&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;deeplearning.ai&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;An YouTube channel run by Andrew Ng.&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -125,15 +117,15 @@
 
 &lt;h2 id=&#34;scientific&#34;&gt;Scientific&lt;/h2&gt;
 
-&lt;h3 id=&#34;english&#34;&gt;English&lt;/h3&gt;
-
-&lt;h3 id=&#34;italian&#34;&gt;Italian&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLrAXtmErZgOdP_8GztsuKi9nrraNbKKp4&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Artificial Intelligence&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Lex Fridman&lt;/em&gt;. A sequence of interviews to many important researchers and key figures in the field of Artifical Intelligence.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&#34;non-scientific&#34;&gt;Non-scientific&lt;/h2&gt;
 
-&lt;h3 id=&#34;english-1&#34;&gt;English&lt;/h3&gt;
+&lt;h3 id=&#34;english&#34;&gt;English&lt;/h3&gt;
 
-&lt;h3 id=&#34;italian-1&#34;&gt;Italian&lt;/h3&gt;
+&lt;h3 id=&#34;italian&#34;&gt;Italian&lt;/h3&gt;
 </description>
     </item>
     
