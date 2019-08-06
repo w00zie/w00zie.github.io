@@ -5,12 +5,39 @@
     <link>https:w00zie.github.io/</link>
       <atom:link href="https:w00zie.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Giovanni Bindi</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 04 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 06 Aug 2019 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https:w00zie.github.io</url>
       <title>Giovanni Bindi</title>
       <link>https:w00zie.github.io/</link>
     </image>
+    
+    <item>
+      <title>SVM explained - Part 2: Kernel trick.</title>
+      <link>https:w00zie.github.io/post/svm_2/</link>
+      <pubDate>Tue, 06 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https:w00zie.github.io/post/svm_2/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://w00zie.github.io/post/svm/&#34;&gt;part 1&lt;/a&gt; we went through the derivation of the decision formula for a binary SVM classifier.&lt;/p&gt;
+
+&lt;p&gt;In this second chapter we drop the hypothesis of the linear separability and extend the already introduced concepts in order to generalize the classification model.&lt;/p&gt;
+
+&lt;h1 id=&#34;the-case-of-non-linearly-separable-sets&#34;&gt;The case of non linearly separable sets&lt;/h1&gt;
+
+&lt;p&gt;We assume that the two previously introduced sets, $P$ and $N$ are not linearly separable, this means that the system of linear inequalities&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ 
+w \cdot x_i + b \geq 1, \hspace{15pt} \forall x_i \in P \\
+w \cdot x_j + b \leq -1, \hspace{15pt} \forall x_j \in N 
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;does not&lt;/em&gt; admit solution. Let&#39;s introduce the &lt;strong&gt;slack&lt;/strong&gt; variables $\xi_i$ for $i=1, \dots, n$:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ w \cdot x_i + b \geq 1 - \xi_i, \hspace{15pt} \forall x_i \in P \\
+w \cdot x_j + b \leq -1 + \xi_i, \hspace{15pt} \forall x_j \in N \\
+\hspace{60pt}\xi_i \geq 0, \ \qquad \qquad \forall i=1,\dots, n
+\]&lt;/span&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Linux &#43; ThinkPad = ♥ </title>
@@ -243,7 +270,7 @@
 
 &lt;p&gt;One of the most known and widely used learning model is &lt;strong&gt;SVM&lt;/strong&gt; (&lt;a href=&#34;https://en.wikipedia.org/wiki/Support-vector_machine&#34;&gt;Support Vector Machine&lt;/a&gt;).&lt;/p&gt;
 
-&lt;p&gt;In this first post we are going to analyze the formal structure of the problem and we are going through the (simple) math needed to write down the SVM equations for linear case. In the next post we&#39;ll be extending this to the non-linear behaviour, introducing the concept of &lt;strong&gt;kernels&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;In this first post we are going to analyze the formal structure of the problem and we are going through the (simple) math needed to write down the SVM equations for linear case. In the &lt;a href=&#34;https://w00zie.github.io/post/svm_2/&#34;&gt;next post&lt;/a&gt; we&#39;ll be extending this to the non-linear behaviour, introducing the concept of &lt;strong&gt;kernels&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;Let&#39;s start with definitions.&lt;/p&gt;
 

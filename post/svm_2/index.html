@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Student">
+  <meta name="description" content="In this second chapter we analyze the case of non linearly separable sets.">
 
   
-  <link rel="alternate" hreflang="en-us" href="https:w00zie.github.io/authors/books/">
+  <link rel="alternate" hreflang="en-us" href="https:w00zie.github.io/post/svm_2/">
 
   
 
@@ -91,14 +91,12 @@
   
 
   
-  <link rel="alternate" href="/authors/books/index.xml" type="application/rss+xml" title="Giovanni Bindi">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon-32.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https:w00zie.github.io/authors/books/">
+  <link rel="canonical" href="https:w00zie.github.io/post/svm_2/">
 
   
   
@@ -110,12 +108,15 @@
   <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Giovanni Bindi">
-  <meta property="og:url" content="https:w00zie.github.io/authors/books/">
-  <meta property="og:title" content=" | Giovanni Bindi">
-  <meta property="og:description" content="Student"><meta property="og:image" content="https:w00zie.github.io">
+  <meta property="og:url" content="https:w00zie.github.io/post/svm_2/">
+  <meta property="og:title" content="SVM explained - Part 2: Kernel trick. | Giovanni Bindi">
+  <meta property="og:description" content="In this second chapter we analyze the case of non linearly separable sets."><meta property="og:image" content="https:w00zie.github.io">
   <meta property="twitter:image" content="https:w00zie.github.io"><meta property="og:locale" content="en-us">
   
     
+      <meta property="article:published_time" content="2019-08-06T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2019-08-06T00:00:00&#43;00:00">
   
 
   
@@ -127,7 +128,7 @@
 
 
 
-  <title> | Giovanni Bindi</title>
+  <title>SVM explained - Part 2: Kernel trick. | Giovanni Bindi</title>
 
 </head>
 
@@ -330,20 +331,7 @@
 </nav>
 
 
-  
-
-
-<section id="profile-page" class="pt-5">
-  <div class="container">
-    
-    
-      
-      
-      
-      
-
-
-
+  <article class="article" itemscope itemtype="http://schema.org/Article">
 
   
 
@@ -355,103 +343,284 @@
 
 
 
-<div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person" itemref="person-email person-address">
-  <div class="col-12 col-lg-4">
-    <div id="profile">
 
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">SVM explained - Part 2: Kernel trick.</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2019-08-06 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-08-06 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Aug 6, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
       
       
-      <img class="portrait" src="/authors/books/avatar_huba7d8c0dcc80c84698d1e1fb54992883_3431_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
       
-
-      <div class="portrait-title">
-        <h2 itemprop="name">Articles &amp; Books</h2>
-        <h3 itemprop="jobTitle">This is a collection of free online articles and books I&rsquo;ve found.</h3>
-
         
-        <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
-          
-          <span itemprop="name">This is a constant work in progress, as I will update this list every time I engage with something relevant.</span>
-          
-        </h3>
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https:w00zie.github.io/post/svm_2/&amp;text=SVM%20explained%20-%20Part%202:%20Kernel%20trick." target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
         
-      </div>
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https:w00zie.github.io/post/svm_2/&amp;t=SVM%20explained%20-%20Part%202:%20Kernel%20trick." target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=SVM%20explained%20-%20Part%202:%20Kernel%20trick.&amp;body=https:w00zie.github.io/post/svm_2/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https:w00zie.github.io/post/svm_2/&amp;title=SVM%20explained%20-%20Part%202:%20Kernel%20trick." target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=SVM%20explained%20-%20Part%202:%20Kernel%20trick.%20https:w00zie.github.io/post/svm_2/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https:w00zie.github.io/post/svm_2/&amp;title=SVM%20explained%20-%20Part%202:%20Kernel%20trick." target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
 
-      <link itemprop="url" href="">
 
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      <p>In <a href="https://w00zie.github.io/post/svm/">part 1</a> we went through the derivation of the decision formula for a binary SVM classifier.</p>
+
+<p>In this second chapter we drop the hypothesis of the linear separability and extend the already introduced concepts in order to generalize the classification model.</p>
+
+<h1 id="the-case-of-non-linearly-separable-sets">The case of non linearly separable sets</h1>
+
+<p>We assume that the two previously introduced sets, $P$ and $N$ are not linearly separable, this means that the system of linear inequalities</p>
+
+<p><span  class="math">\[ 
+w \cdot x_i + b \geq 1, \hspace{15pt} \forall x_i \in P \\
+w \cdot x_j + b \leq -1, \hspace{15pt} \forall x_j \in N 
+\]</span></p>
+
+<p><em>does not</em> admit solution. Let's introduce the <strong>slack</strong> variables $\xi_i$ for $i=1, \dots, n$:</p>
+
+<p><span  class="math">\[ w \cdot x_i + b \geq 1 - \xi_i, \hspace{15pt} \forall x_i \in P \\
+w \cdot x_j + b \leq -1 + \xi_i, \hspace{15pt} \forall x_j \in N \\
+\hspace{60pt}\xi_i \geq 0, \ \qquad \qquad \forall i=1,\dots, n
+\]</span></p>
+
+    </div>
+
+    
+
+
+    
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu351c70bc5cdcd92ea95125a134391ca5_80941_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https:w00zie.github.io">Giovanni Bindi</a></h5>
+      <h6 class="card-subtitle">Student</h6>
+      <p class="card-text" itemprop="description">I write stuff in my spare time.</p>
       <ul class="network-icon" aria-hidden="true">
         
+          
+          
+          
+            
+          
+          
+          
+          
+          
+          <li>
+            <a itemprop="sameAs" href="mailto:giovanni.bindi41@gmail.com" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/w00zie" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
       </ul>
-
     </div>
   </div>
-  <div class="col-12 col-lg-8" itemprop="description">
-
-    
-    
-
-    
-
-<h1 id="books">Books</h1>
-
-<h2 id="english">English</h2>
-
-<ul>
-<li><a href="https://www.deeplearningbook.org/" target="_blank"><strong>Deep Learning</strong></a> - <em>Ian Goodfellow, Yoshua Bengio, Aaron Courville</em>, MIT press, 2016.</li>
-<li><a href="http://www.inference.org.uk/mackay/itprnn/book.html" target="_blank"><strong>Information Theory, Pattern Recognition and Neural Networks</strong></a> - <em>David McKay</em>, Cambridge University Press, 2003.</li>
-<li><a href="https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf" target="_blank"><strong>Reinforcement Learning, an Introduction</strong></a> - <em>Richard S. Sutton, Andrew G. Barto</em>, MIT press, 2015.</li>
-<li><a href="http://neuralnetworksanddeeplearning.com/" target="_blank"><strong>Neural Networks and Deep Learning</strong></a> - <em>Michael A. Nielsen</em><sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>, 2015.</li>
-<li><a href="http://faculty.marshall.usc.edu/gareth-james/ISL/" target="_blank"><strong>An Introduction to Statistical Learning</strong></a> - <em>Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani</em>, Springer, 2017.</li>
-<li><a href="https://web.stanford.edu/~hastie/Papers/ESLII.pdf" target="_blank"><strong>The Elements of Statistical Learning</strong></a> - <em>Trevor Hastie, Robert Tibshirani, Jerome Friedman</em>, Springer, 2009.</li>
-<li><a href="http://web4.cs.ucl.ac.uk/staff/D.Barber/pmwiki/pmwiki.php?n=Brml.HomePage" target="_blank"><strong>Bayesian Reasoning and Machine Learning</strong></a> - <em>David Barber</em>, Cambridge, 2012.</li>
-<li><a href="https://jakevdp.github.io/PythonDataScienceHandbook/" target="_blank"><strong>Python Data Science Handbook</strong></a> - <em>Jake VanderPlas</em>, O&rsquo;Reilly, 2016.</li>
-</ul>
-
-<h2 id="italian">Italian</h2>
-
-<hr />
-
-<h1 id="articles">Articles</h1>
-
-<ul>
-<li><a href="https://paperswithcode.com/" target="_blank"><strong>Papers with code</strong></a> - A site where you can dig among papers (in the field of ML) with open source code officialy released.</li>
-<li><a href="http://www-e.uni-magdeburg.de/mertens/pubs/cise.pdf" target="_blank"><strong>Computational Complexity for Physicists</strong></a> - <em>Stephan Mertens</em>, 2002.</li>
-<li><a href="https://www.cs.cmu.edu/~tom/pubs/MachineLearning.pdf" target="_blank"><strong>The Discipline of Machine Learning</strong></a> - <em>Tom M. Mitchell</em>, 2006.</li>
-<li><a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/35179.pdf" target="_blank"><strong>The Unreasonable Effectiveness of Data</strong></a> - <em>Alon Halevy, Peter Norvig, and Fernando Pereira</em>, 2009.</li>
-<li><a href="https://arxiv.org/pdf/1502.05767.pdf" target="_blank"><strong>Automatic Differentiation in Machine Learning: A Survey</strong></a> - <em>Baydin et al.</em>, 2018.</li>
-<li><a href="https://cilvr.cs.nyu.edu/diglib/lsml/bottou-sgd-tricks-2012.pdf" target="_blank"><strong>Stochastic Gradient Descent Tricks</strong></a> - <em>Léon Bottou</em>, 2012.</li>
-<li><a href="https://arxiv.org/pdf/1410.3916.pdf" target="_blank"><strong>Memory Networks</strong></a> - <em>Weston et al.</em>, 2016.</li>
-</ul>
-
-<h1 id="non-scientific">Non-scientific</h1>
-<div class="footnotes">
-
-<hr />
-
-<ol>
-<li id="fn:1"><a href="http://michaelnielsen.org/" target="_blank">Michael Nielsen</a> is also a co-author of a beautiful book: Quantum Computation &amp; Quantum Information.
- <a class="footnote-return" href="#fnref:1"><sup>^</sup></a></li>
-</ol>
-</div>
 
 
-    <div class="row">
 
       
-
       
+    
 
-    </div>
+    
+
+    
+
+
   </div>
-</div>
-
-    
-
-    
-    
-    
-  </div>
-</section>
+</article>
 
       
 
