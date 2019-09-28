@@ -43,6 +43,7 @@
 &lt;li&gt;&lt;a href=&#34;https://web.stanford.edu/~hastie/Papers/ESLII.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;The Elements of Statistical Learning&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Trevor Hastie, Robert Tibshirani, Jerome Friedman&lt;/em&gt;, Springer, 2009.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://web4.cs.ucl.ac.uk/staff/D.Barber/pmwiki/pmwiki.php?n=Brml.HomePage&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Bayesian Reasoning and Machine Learning&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;David Barber&lt;/em&gt;, Cambridge, 2012.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://jakevdp.github.io/PythonDataScienceHandbook/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Python Data Science Handbook&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Jake VanderPlas&lt;/em&gt;, O&amp;rsquo;Reilly, 2016.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://eceweb1.rutgers.edu/~orfanidi/aosp//index.html&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Applied Optimum Signal Processing&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Sophocles J. Orfanidis&lt;/em&gt;, 2018.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;italian&#34;&gt;Italian&lt;/h2&gt;
@@ -52,16 +53,18 @@
 &lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://paperswithcode.com/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Papers with code&lt;/strong&gt;&lt;/a&gt; - A site where you can dig among papers (in the field of ML) with open source code officialy released.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://paperswithcode.com/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Papers With Code&lt;/strong&gt;&lt;/a&gt; - A site where you can dig among papers (in the field of ML) with open source code officialy released.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www-e.uni-magdeburg.de/mertens/pubs/cise.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Computational Complexity for Physicists&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Stephan Mertens&lt;/em&gt;, 2002.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.cs.cmu.edu/~tom/pubs/MachineLearning.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;The Discipline of Machine Learning&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Tom M. Mitchell&lt;/em&gt;, 2006.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/35179.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;The Unreasonable Effectiveness of Data&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Alon Halevy, Peter Norvig, and Fernando Pereira&lt;/em&gt;, 2009.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://arxiv.org/pdf/1502.05767.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Automatic Differentiation in Machine Learning: A Survey&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Baydin et al.&lt;/em&gt;, 2018.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://cilvr.cs.nyu.edu/diglib/lsml/bottou-sgd-tricks-2012.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Stochastic Gradient Descent Tricks&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Léon Bottou&lt;/em&gt;, 2012.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://arxiv.org/pdf/1410.3916.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Memory Networks&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Weston et al.&lt;/em&gt;, 2016.&lt;/li&gt;
-&lt;/ul&gt;
 
-&lt;h1 id=&#34;non-scientific&#34;&gt;Non-scientific&lt;/h1&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://papers.nips.cc/paper/4878-understanding-dropout.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Understanding Dropout&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Pierre Baldi, Peter Sadowski&lt;/em&gt;, 2013.&lt;/p&gt;
+
+&lt;h1 id=&#34;non-scientific&#34;&gt;Non-scientific&lt;/h1&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 
 &lt;hr /&gt;
@@ -88,6 +91,7 @@
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=2pWv7GOvuf0&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Reinforcement Learning&lt;/strong&gt;&lt;/a&gt; - David Silver, &lt;em&gt;UCL/DeepMind&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLqYmG7hTraZDNJre23vqCGIVpfZ_K2RZs&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Advanced Deep Learning &amp;amp; Reiforcement Learning&lt;/strong&gt;&lt;/a&gt; - Various, &lt;em&gt;UCL&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=dV80NAlEins&amp;amp;list=PLE6Wd9FR--EfW8dtjAuPoTuPcqmOV53Fu&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Deep Learning&lt;/strong&gt;&lt;/a&gt; - Nando de Freitas, &lt;em&gt;Oxford&lt;/em&gt; (check his channel for other courses!).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLyGKBDfnk-iDj3FBd0Avr_dLbrU8VG73O&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Statistical Learning Theory and Applications&lt;/strong&gt;&lt;/a&gt; - Tomaso Poggio, &lt;em&gt;MIT&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=JRZgW1YjCKk&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;General Relativity&lt;/strong&gt;&lt;/a&gt; - Leonard Susskind, &lt;em&gt;Stanford&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLUl4u3cNGP61-9PEhRognw5vryrSEVLPr&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Quantum Mechanics&lt;/strong&gt;&lt;/a&gt; - Allan Adams, &lt;em&gt;MIT&lt;/em&gt;.&lt;/li&gt;
 &lt;/ul&gt;

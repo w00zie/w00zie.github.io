@@ -23,7 +23,7 @@
 
 &lt;h1 id=&#34;the-case-of-non-linearly-separable-sets&#34;&gt;The case of non linearly separable sets&lt;/h1&gt;
 
-&lt;p&gt;We assume that the two previously introduced sets, $P$ and $N$ are not linearly separable, this means that the system of linear inequalities&lt;/p&gt;
+&lt;p&gt;We assume that the two previously introduced sets, $P$ and $N$, are not linearly separable, this means that the system of linear inequalities&lt;/p&gt;
 
 &lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ 
 w \cdot x_i + b \geq 1, \hspace{15pt} \forall x_i \in P \\
@@ -480,7 +480,7 @@ the hyperplane with maximum margin, the so-called &lt;strong&gt;optimal separati
 &lt;p&gt;We can now either solve problem $(P)$ or $(L)$ indifferently. Suppose we solved problem $(L)$, obtaining a &lt;span  class=&#34;math&#34;&gt;\(\lambda^*\)&lt;/span&gt;. We can retrieve &lt;span  class=&#34;math&#34;&gt;\(w^*\)&lt;/span&gt; from $(1)$ as&lt;/p&gt;
 
 &lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
-w^* = \sum_i \lambda_i x_i y_i
+w^* = \sum_i \lambda_i^* x_i y_i
 \]&lt;/span&gt;&lt;/p&gt;
 
 &lt;p&gt;An important fact, that comes from the KKT complementary slackness, is that the solution $w^*$ depends only on the so-called &lt;strong&gt;support vectors&lt;/strong&gt; &lt;span  class=&#34;math&#34;&gt;\(x_i\)&lt;/span&gt;, whose correspondent multipliers &lt;span  class=&#34;math&#34;&gt;\(\lambda_i^*\)&lt;/span&gt; are not null.&lt;/p&gt;
