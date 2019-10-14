@@ -42,6 +42,7 @@
 &lt;li&gt;&lt;a href=&#34;http://faculty.marshall.usc.edu/gareth-james/ISL/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;An Introduction to Statistical Learning&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani&lt;/em&gt;, Springer, 2017.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://web.stanford.edu/~hastie/Papers/ESLII.pdf&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;The Elements of Statistical Learning&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Trevor Hastie, Robert Tibshirani, Jerome Friedman&lt;/em&gt;, Springer, 2009.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://web4.cs.ucl.ac.uk/staff/D.Barber/pmwiki/pmwiki.php?n=Brml.HomePage&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Bayesian Reasoning and Machine Learning&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;David Barber&lt;/em&gt;, Cambridge, 2012.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cs.nyu.edu/~mohri/mlbook/&#34; target=&#34;_blank&#34;&gt;** Foundations of Machine Learning**&lt;/a&gt; - &lt;em&gt;Mehryar Mohri, Afshin Rostamizadeh, and Ameet Talwalkar&lt;/em&gt;, MIT Press, 2018.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://jakevdp.github.io/PythonDataScienceHandbook/&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Python Data Science Handbook&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Jake VanderPlas&lt;/em&gt;, O&amp;rsquo;Reilly, 2016.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://eceweb1.rutgers.edu/~orfanidi/aosp//index.html&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Applied Optimum Signal Processing&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Sophocles J. Orfanidis&lt;/em&gt;, 2018.&lt;/li&gt;
 &lt;/ul&gt;
@@ -88,11 +89,13 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=BCiZc0n6COY&amp;amp;list=PLruBu5BI5n4aFpG32iMbdWoRVAA-Vcso6&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Information Theory, Pattern Recognition and Neural Networks&lt;/strong&gt;&lt;/a&gt; - David McKay, &lt;em&gt;Cambridge&lt;/em&gt; (also &lt;a href=&#34;http://www.inference.org.uk/mackay/itprnn/book.html&#34; target=&#34;_blank&#34;&gt;book&lt;/a&gt; freely available online, thank you David!).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLFze15KrfxbGsPDYxeLyeYorlHSBsTPv0&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Information Theory&lt;/strong&gt;&lt;/a&gt; -  Jeffrey A. Bilmes, University of Washington.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=2pWv7GOvuf0&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Reinforcement Learning&lt;/strong&gt;&lt;/a&gt; - David Silver, &lt;em&gt;UCL/DeepMind&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLqYmG7hTraZDNJre23vqCGIVpfZ_K2RZs&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Advanced Deep Learning &amp;amp; Reiforcement Learning&lt;/strong&gt;&lt;/a&gt; - Various, &lt;em&gt;UCL&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=dV80NAlEins&amp;amp;list=PLE6Wd9FR--EfW8dtjAuPoTuPcqmOV53Fu&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Deep Learning&lt;/strong&gt;&lt;/a&gt; - Nando de Freitas, &lt;em&gt;Oxford&lt;/em&gt; (check his channel for other courses!).&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLyGKBDfnk-iDj3FBd0Avr_dLbrU8VG73O&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Statistical Learning Theory and Applications&lt;/strong&gt;&lt;/a&gt; - Tomaso Poggio, &lt;em&gt;MIT&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=JRZgW1YjCKk&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;General Relativity&lt;/strong&gt;&lt;/a&gt; - Leonard Susskind, &lt;em&gt;Stanford&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PL58C21330EF13984D&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Statistical Mechanics&lt;/strong&gt;&lt;/a&gt; - Leonard Susskind, &lt;em&gt;Stanford&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PLUl4u3cNGP61-9PEhRognw5vryrSEVLPr&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Quantum Mechanics&lt;/strong&gt;&lt;/a&gt; - Allan Adams, &lt;em&gt;MIT&lt;/em&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -111,6 +114,7 @@
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/user/Computerphile&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Computerphile&lt;/strong&gt;&lt;/a&gt; and &lt;a href=&#34;https://www.youtube.com/user/numberphile/videos&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Numberphile&lt;/strong&gt;&lt;/a&gt; - By their definitions: the first one is a channel on &lt;em&gt;videos all about computers and computer stuff&lt;/em&gt; and the second one is &lt;em&gt;videos about numbers - it&amp;rsquo;s that simple&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/playlist?list=PL9Hr9sNUjfsmEu1ZniY0XpHSzl5uihcXZ&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;Tensorflow tutorials&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;Hvass Laboratories&lt;/em&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/channel/UCcIXc5mJsHVYTZR1maL5l9w/playlists&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;deeplearning.ai&lt;/strong&gt;&lt;/a&gt; - &lt;em&gt;An YouTube channel run by Andrew Ng.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/channel/UCiy-GdlDdcAad83__1B7L6Q/playlists&#34; target=&#34;_blank&#34;&gt;&lt;strong&gt;M&amp;amp;MoCS&lt;/strong&gt;&lt;/a&gt; - Centro Internazionale di Ricerca per la “Matematica &amp;amp; Meccanica dei Sistemi Complessi”, &lt;em&gt;Università dell&amp;rsquo;Aquila&lt;/em&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
