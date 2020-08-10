@@ -1,0 +1,2433 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Giovanni Bindi">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Table of Contents  Introduction The data Theory  WAE-GAN WAE-MMD   Experiments details  Architechtures Prior Latent space dimensionality Adversarial training Cost function Hyperparameters   Results Survey    Introduction This is a project I started working on for my Machine Learning class.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://w00zie.github.io/post/wae/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#4caf50">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://w00zie.github.io/post/wae/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@gvnbnd">
+  <meta property="twitter:creator" content="@gvnbnd">
+  
+  <meta property="og:site_name" content="Giovanni Bindi">
+  <meta property="og:url" content="https://w00zie.github.io/post/wae/">
+  <meta property="og:title" content="Music generation with Wasserstein Autoencoders | Giovanni Bindi">
+  <meta property="og:description" content="Table of Contents  Introduction The data Theory  WAE-GAN WAE-MMD   Experiments details  Architechtures Prior Latent space dimensionality Adversarial training Cost function Hyperparameters   Results Survey    Introduction This is a project I started working on for my Machine Learning class."><meta property="og:image" content="https://w00zie.github.io/media/giova.jpg">
+  <meta property="twitter:image" content="https://w00zie.github.io/media/giova.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-08-01T16:46:13&#43;02:00">
+    
+    <meta property="article:modified_time" content="2020-08-01T16:46:13&#43;02:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://w00zie.github.io/post/wae/"
+  },
+  "headline": "Music generation with Wasserstein Autoencoders",
+  
+  "datePublished": "2020-08-01T16:46:13+02:00",
+  "dateModified": "2020-08-01T16:46:13+02:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Giovanni Bindi"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Giovanni Bindi",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://w00zie.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Table of Contents  Introduction The data Theory  WAE-GAN WAE-MMD   Experiments details  Architechtures Prior Latent space dimensionality Adversarial training Cost function Hyperparameters   Results Survey    Introduction This is a project I started working on for my Machine Learning class."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Music generation with Wasserstein Autoencoders | Giovanni Bindi</title>
+
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Giovanni Bindi</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Giovanni Bindi</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#people"><span>Interesting stuff</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Music generation with Wasserstein Autoencoders</h1>
+
+  
+  <p class="page-subtitle">An attempt on music generation.</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span ><a href="/author/giovanni-bindi/">Giovanni Bindi</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Aug 1, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    12 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <div align="center"> <h2>Table of Contents</h2>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#the-data">The data</a></li>
+    <li><a href="#theory">Theory</a>
+      <ul>
+        <li><a href="#wae-gan">WAE-GAN</a></li>
+        <li><a href="#wae-mmd">WAE-MMD</a></li>
+      </ul>
+    </li>
+    <li><a href="#experiments-details">Experiments details</a>
+      <ul>
+        <li><a href="#architechtures">Architechtures</a></li>
+        <li><a href="#prior">Prior</a></li>
+        <li><a href="#latent-space-dimensionality">Latent space dimensionality</a></li>
+        <li><a href="#adversarial-training">Adversarial training</a></li>
+        <li><a href="#cost-function">Cost function</a></li>
+        <li><a href="#hyperparameters">Hyperparameters</a></li>
+      </ul>
+    </li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#survey">Survey</a></li>
+  </ul>
+</nav>
+ </div>
+<h2 id="introduction">Introduction</h2>
+<p>This is a project I started working on for my Machine Learning class. The aim, as you can read from the title, is being able to generate music that is, at least, not unpleasant.</p>
+<p>In order to do so I investigated the use of Wasserstein Autoencoders (WAE), a generative model firstly proposed by Tolstikhin <em>et al.</em> <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, which employs a regularizer derived from the theory of optimal transport.</p>
+<h2 id="the-data">The data</h2>
+<p>The data I used was published by a group of researchers from the 
+<a href="https://musicai.citi.sinica.edu.tw/" target="_blank" rel="noopener">Academia Sinica</a> (Taiwan), as part of a paper<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> where they jointly proposed a novel GAN (MuseGAN) and released the dataset where the model was trained on. They open-sourced almost everything so you can access to their 
+<a href="https://github.com/salu133445/musegan" target="_blank" rel="noopener">code</a> and 
+<a href="https://salu133445.github.io/musegan/data" target="_blank" rel="noopener">data</a>.</p>
+<p>This dataset contains 174154 unique 4/4 multi-track music pieces of 4 bars, coming from different rock music compositions. Every element of this dataset is represented as a multi-track (binary-valued) pianoroll. For those of you who are not familiar with DAWs or audio processing, a single-track pianoroll is basically a matrix whose entries represent the behaviour of the notes played by the single instrument. The number of columns in this matrix is the number of time-steps used to quantize the composition while the number of rows represents the octave extension, i.e. the number of possible notes that the instrument can execute.</p>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-example-of-a-pianoroll">
+
+
+  <a data-fancybox="" href="/post/wae/img/pianoroll_hu0665c07db140e9b058b96a7d644ee03b_63264_2000x2000_fit_q90_lanczos.jpeg" data-caption="Example of a pianoroll">
+
+
+  <img data-src="/post/wae/img/pianoroll_hu0665c07db140e9b058b96a7d644ee03b_63264_2000x2000_fit_q90_lanczos.jpeg" class="lazyload" alt="" width="800" height="600">
+</a>
+
+
+  
+  
+  <figcaption data-pre="Figure " data-post=":" class="numbered">
+    Example of a pianoroll
+  </figcaption>
+
+
+</figure>
+
+<p>In this dataset a single bar is quantized into 48 time-steps (the minimum duration of a note is then 1/48th) and can span between 84 notes from C1 to B7. Every element of the dataset contains 4 bars of 5 instruments, resulting in a binary-valued (note on/off - velocity information is discarded) tensor of shape (4*48, 84, 5) = (192, 84, 5). The tempo was set to 100 bpm and the authors transposed every element to the same tonality.
+The instruments involved are <em>Drums, Bass, Guitar, Piano</em> and <em>Strings</em>.</p>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-one-element-of-the-dataset-4-bars-of-5-instruments-best-with-the-white-theme">
+
+
+  <a data-fancybox="" href="/post/wae/img/mydata_hud05689e6339d7b054e3f596aaa3e4ce0_289573_2000x2000_fit_lanczos_2.png" data-caption="One element of the dataset: 4 bars of 5 instruments (best with the white theme)">
+
+
+  <img data-src="/post/wae/img/mydata_hud05689e6339d7b054e3f596aaa3e4ce0_289573_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="1442" height="1634">
+</a>
+
+
+  
+  
+  <figcaption data-pre="Figure " data-post=":" class="numbered">
+    One element of the dataset: 4 bars of 5 instruments (best with the white theme)
+  </figcaption>
+
+
+</figure>
+
+<p>The pianoroll is one of the most commonly used representations, although it has some limitations. An important one, compared to the MIDI representation, is that there is no <em>note-off</em> information. As a result, there is no way to distinguish between a long note and repeated short notes.
+In order to partially solve this issue the authors did as following</p>
+<blockquote>
+<p>Note that during the conversion from MIDI files to pianorolls, an additional minimal-length (of one time step) pause is added between two consecutive (without a pause) notes of the same pitch to distinguish them from one single note.</p>
+</blockquote>
+<p>A few samples from the dataset<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> (<strong>lower your audio output</strong>):</p>
+<div align="center"> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/orig/orig_1.mp3" type="audio/mpeg">
+  </audio>
+ </div>
+<div align="center"> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/orig/orig_2.mp3" type="audio/mpeg">
+  </audio>
+ </div>
+<div align="center"> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/orig/orig_3.mp3" type="audio/mpeg">
+  </audio>
+ </div>
+<div align="center"> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/orig/orig_4.mp3" type="audio/mpeg">
+  </audio>
+ </div>
+<h2 id="theory">Theory</h2>
+<p><strong>Disclaimer</strong>: <em>a lot of this theory is taken from the original paper<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, I did not re-write it from scratch</em>!</p>
+<p>WAEs are a class of Autoencoders derived by theory of 
+<a href="https://en.wikipedia.org/wiki/Transportation_theory_%28mathematics%29" target="_blank" rel="noopener">optimal transport</a>. Given a collection of (unlabelled) data points $S_X$, the ultimate goal of the task is to tune a model capable of generating sets of synthetic points $S_G$ which look similar to $S_X$. There are various ways of defining the notion of similarity between two sets of data points: the most common approach assumes that both $S_X$ and $S_G$ are sampled independently from two probability distributions $P_X$ and $P_G$ respectively, and employ some of the known divergence measures for distributions.</p>
+<p>Two major approaches currently dominate this field.
+Variational Auto-Encoders (VAEs) minimize the Kullback-Leibler (KL) divergence
+$D_{KL}(P_X, P_G)$, which is equivalent to maximizing the marginal log-likelihood of the model $P_G$. Generative Adversarial Networks (GANs) employ an elegant framework, commonly referred to as adversarial training, which is suitable for many different divergence measures, including (but not limited to) $f-$divergences, 1-Wasserstein distance, and Maximum Mean Discrepancy (MMD).</p>
+<p>Similarly to VAEs, WAEs describe a particular way to train probabilistic <em>latent variable models</em> (LVMs) $P_G$. LVMs act by first sampling a code (feature) vector $Z$ from a prior distribution $P_Z$ defined over the latent space $\mathcal{Z}$ and then mapping it to a random input point $X \in \mathcal{X}$ using a conditional distribution $P_G(X|Z)$ also known as the <em>decoder</em>. This results is a density of the form</p>
+<p>$$
+p_G(x) = \int_{\mathcal{Z}} p_G(x|z)p(z)dz
+$$</p>
+<p>assuming all involved densities are properly defined.</p>
+<p>Instead of minimizing the KL divergence between the LVM $P_G$ and the unknown data distribution $P_X$ as done by VAEs, WAEs aim at minimizing any optimal transport distance between them. Kantorovich&rsquo;s formulation of the optimal transport problem (OT) is given by</p>
+<p>$$
+W_c(P_X, P_G) = \inf_{\Gamma \in \mathcal{P}(X \sim P_X, Y \sim P_G)} \mathbb{E}_{(X,Y) \sim \Gamma} [c(X,Y)]
+$$</p>
+<p>where $c:\mathcal{X} \times \mathcal{Y} \to \mathbb{R}^+$ is any measurable cost function and $\mathcal{P}(X \sim P_X, Y \sim P_G)$ is the set of all joint distributions of $(X, Y)$ with marginals $P_X$ and $P_G$ respectively. When $(\mathcal{X}, d)$ is a metric space (with distance $d$) and $c(x,y) = d^p(x,y)$ for $p \geq 1$ then $W_p$ (the $p$-th root of $W_c$) is known as the $p$-<em>Wasserstein distance</em>. When $p=1$ we then have the $1$-Wasserstein distance and this duality holds (Kantorovich-Rubinstein duality)</p>
+<p>$$
+W_1(P_X, P_G) = \sup_{f \in \mathcal{F}_L} \mathbb{E}_{X \sim P_X} [f(X)] - \mathbb{E}_{Y \sim P_G}[f(Y)]
+$$</p>
+<p>where $\mathcal{F}_L$ is the set of all bounded 1-Lipschitz functions on $(\mathcal{X}, d)$.
+The authors state (and prove) that for deterministic decoders, i.e. $P_G(X|Z=z) = \delta_{G(z)}$ deterministically mapping latent codes $z \in \mathcal{Z}$ to the input space for a given map $G: \mathcal{Z} \to \mathcal{X}$, there is a simpler formulation for the OT problem: instead of finding a coupling $\Gamma$ between two random variables in $\mathcal{X}$ it is sufficient to find a conditional distribution $Q(Z|X)$ such that its $Z$ marginal $Q(Z) = \mathbb{E}_{X \sim P_X} [Q(Z|X)]$ is identical to the prior distribution $P_Z$. This resulted in a theorem where the OT problem was re-formulated (under these assumptions) as</p>
+<p>$$
+W_c(P_X, P_G) = \inf_{Q:Q_Z = P_Z} \mathbb{E}_{P_X}\big [ \mathbb{E}_{Q(Z|X)}[c(X, G(Z))] \big ]
+$$</p>
+<p>In order to implement a numerical solution to this problem the authors relax the constraint on $Q_Z$ by adding a penalty term to the objective, which, in the end, takes the following form</p>
+<p>$$
+D_{WAE}(P_X, P_G) = \inf_{Q(Z|X) \in \mathcal{Q}} \mathbb{E}_{P_X}\big [ \mathbb{E}_{Q(Z|X)}[c(X, G(Z))] \big ] + \lambda \mathcal{D}_Z(Q_Z, P_Z)
+$$</p>
+<p>where $\mathcal{Q}$ is any nonparametric set of probabilistic encoders, $\mathcal{D}_Z$ is an arbitrary divergence between $Q_Z$ and $P_Z$ , and $\lambda &gt; 0$ is a hyperparameter. The authors propose two implementations of the WAE model, based on two different divergences.</p>
+<h3 id="wae-gan">WAE-GAN</h3>
+<p>The WAE-GAN model employs the Jensen-Shannon divergence, i.e.</p>
+<p>$$
+\mathcal{D}_Z(Q_Z, P_Z) = \mathcal{D}_{JS}(Q_Z, P_Z) = \frac{1}{2} D_{KL}(P_Z, M) + \frac{1}{2} D_{KL}(Q_Z, M)
+$$</p>
+<p>where $M = \frac{1}{2}(P_Z + Q_Z)$ and uses the adversarial training to estimate it. The authors introduce an adversary (discriminator) in the latent space $\mathcal{Z}$ trying to separate &ldquo;true&rdquo; points sampled from $P_Z$ and &ldquo;fake&rdquo; ones sampled from $Q_Z$.</p>
+<h3 id="wae-mmd">WAE-MMD</h3>
+<p>For a positive-definite reproducing kernel $k : \mathcal{X} \times \mathcal{X} \to \mathbb{R}$ the following expression is called the <em>Maximum Mean Discrepancy</em> (MMD):</p>
+<p>$$
+\text{MMD}_k(P_Z, Q_Z) = \Big | \Big | \int_\mathcal{Z} k(z, \cdot) dP_Z(z) - \int_\mathcal{Z} k(z, \cdot) dQ_Z(z) \Big | \Big |_{\mathcal{H}_k}
+$$</p>
+<p>where $\mathcal{H}_k$ is the RKHS of real-valued functions mapping $\mathcal{Z}$ to $\mathcal{R}$. If $k$ is <em>characteristic</em> then MMD$_k$
+defines a metric and can be used as a divergence measure. The authors propose to use an unbiased estimate of the MMD that is the sum of two $U$-statistics and a sample average.
+Given i.i.d. samples $\mathbf{P} = { z_1, \dots, z_n }$ from $P_Z$ and i.i.d. samples $\mathbf{Q} = {\tilde{z}_1, \dots, \tilde{z}_n}$ from $Q(Z|z_i)$ , the unbiased estimate<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> is</p>
+<p>$$
+\widehat{MMD}^2_U \big [\mathcal{H}_k, \mathbf{P}, \mathbf{Q} \big ] = \frac{1}{n(n-1)} \sum_{i=1}^n \sum_{j \neq i} k(z_i, z_j) + \sum_{i=1}^n \sum_{j \neq i} k(\tilde{z}_i, \tilde{z}_j) - \frac{2}{n^2} \sum_{i=1}^n \sum_{j=1}^n k(z_i, \tilde{z}_j)
+$$</p>
+<h2 id="experiments-details">Experiments details</h2>
+<h3 id="architechtures">Architechtures</h3>
+<p>Encoder $Q_\phi$, decoder $G_{\theta}$ and discriminator $D_{\gamma}$ are parametrized by deep neural nets. Given the structure of the data, binary-valued tensors of shape (H,W,5) (where 5, the number of instruments, plays naturally the role of the number of channels), both encoder and decoder are CNNs, while the discriminator (which acts in the latent space $\mathcal{Z}$) is a &ldquo;vanilla&rdquo; NN. You can check out the various models I&rsquo;ve coded 
+<a href="https://github.com/w00zie/wae_music" target="_blank" rel="noopener">here</a>, they are almost all equals except for the strides of the convolutions.</p>
+<p>The main architecture I used was inspired by DCGAN <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. In the following picture I&rsquo;m showing the encoder that, starting from the (192, 84, 5) input tensor, applies 4 convolutions with $[6,6]$ filters, followed by Batch Normalizations and ReLUs. The last layer employs a reshape (not shown in the picture) followed by a fully-connected layer that maps the previous inputs into a vector of size $dim(\mathcal{Z}) = d_{\mathcal{Z}}$ (in this case I went with $d_{\mathcal{Z}} = 8$).</p>
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-my-encoder-made-with-nn-svghttpsalexlenailmenn-svg">
+
+
+  <a data-fancybox="" href="/post/wae/img/encoder_hu03db60d98e0fb8a5cd64c7aee1dc2862_38313_2000x2000_fit_lanczos_2.png" data-caption="My encoder (made with &lt;a href=&#34;https://alexlenail.me/NN-SVG/&#34;&gt;NN-SVG&lt;/a&gt;)">
+
+
+  <img data-src="/post/wae/img/encoder_hu03db60d98e0fb8a5cd64c7aee1dc2862_38313_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="1024" height="586">
+</a>
+
+
+  
+  
+  <figcaption data-pre="Figure " data-post=":" class="numbered">
+    My encoder (made with <a href="https://alexlenail.me/NN-SVG/">NN-SVG</a>)
+  </figcaption>
+
+
+</figure>
+
+<p>The decoder acts simmetrically wrt the encoder, using 
+<a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2DTranspose" target="_blank" rel="noopener">2D transposed convolutions</a> instead of convolutions. The discriminator network maps a vector from $\mathcal{Z}$ to $[0,1]$ through 6 dense layers of 512 neurons followed by ReLUs.</p>
+<h3 id="prior">Prior</h3>
+<p>I&rsquo;ve used a Gaussian prior $P_Z = \mathcal{N} \big ( 0, \sigma_z^2 \cdot I_{d_z} \big )$ where the variance $\sigma_z^2$ is an hyperparameter.</p>
+<h3 id="latent-space-dimensionality">Latent space dimensionality</h3>
+<p>The authors studied the choice of the dimensionality of the latent space in a follow-up paper<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>. They investigated the relationship between the latent space dimension $d_{\mathcal{Z}}$ and the *intrinsic dimensionality* of the data distribution, $d_{\mathcal{I}}$. This last quantity is, informally, *the minimum number of parameters required to continuously parametrise the data manifold*. If this quantity is greater than $d_{\mathcal{Z}}$ then the encoder will map the data distribution $P_X$ to $Q_Z$ supported on a latent manifold of dimension at most $d_{\mathcal{I}}$ while the divergence regularizer $\lambda \mathcal{D}_Z (Q_Z, P_Z)$ will encourage the encoder to fill the latent space similarly to the prior $P_Z$ as much as possible. This can potentially lead to the absence of any learning capability.</p>
+<h3 id="adversarial-training">Adversarial training</h3>
+<p>I&rsquo;ve decided to use (as the authors suggest) the non-saturating GAN loss <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>: this resulted in a discriminator $D_\gamma$ trained by the maximization of</p>
+<p>$$
+\frac{\lambda}{n} \sum_{i=1}^n \log D_\gamma(z_i) + \log D_\gamma(1-\tilde{z}_i)
+$$</p>
+<p>and in an autoencoder ($Q_\phi, G_\theta$) trained by the minimization of</p>
+<p>$$
+\frac{1}{n}\sum_{i=1}^n c(z_i, G_\theta(\tilde{z}_i)) - \lambda D_\gamma \log (\tilde{z}_i)
+$$</p>
+<p>As the authors point out this procedure falls into the min-max problem which makes GAN unstable. This training strategy can then possibly yield instabilities in the training phase but the authors claim that by executing an adversarial training in a &ldquo;simpler&rdquo; space (wrt the pixel space where GANs are usually trained on), the whole process could benefit.</p>
+<h3 id="cost-function">Cost function</h3>
+<p>I&rsquo;ve used $c(x, y) = || x - y ||_2^2$ for both implementations (WAE-GAN and WAE-MMD).</p>
+<h3 id="hyperparameters">Hyperparameters</h3>
+<p>Since there is no objective measure of performace for this kind of task, running an hyperparameter optimization procedure is hard. I&rsquo;ve adjusted the parameters manually and so the results I obtained might not be the best that these model can produce.</p>
+<h2 id="results">Results</h2>
+<p>As mentioned in the data section, the input samples are binary-valued tensors of shape (192, 84, 5). The decoder, although, maps a latent code into $[0, 1]^{192 \times 84 \times 5}$ through the action of the sigmoid function. These output tensors $\hat{x}$ must then be <em>binarized</em>, and I&rsquo;ve used two strategies to do so:</p>
+<ol>
+<li>
+<p>Hard thresholding (HT): The resulting tensor entry $\hat{x}_{ijk}$ needs to be greater than a fixed threshold (0.5) in order to be mapped to 1.
+$$\hat{x}_{ijk}^{HT} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &gt; 0.5 \\<br>
+0 &amp; \text {o.w }\end{cases}$$</p>
+</li>
+<li>
+<p>Bernoulli sampling (BS): The resulting tensor entry $\hat{x}_{ijk}$ needs to be greater than a sample from the uniform distribution over scalars between 0 and 1.
+$$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &gt; b \sim \mathcal{U}[0,1] \\<br>
+0 &amp; \text {o.w }\end{cases}$$</p>
+</li>
+</ol>
+<p>I&rsquo;m presenting samples binarized with the HT method.</p>
+<hr>
+<p>For a &ldquo;fair&rdquo; comparison the following results have been obtained with the same architecture and hyperparameters. Both WAE-GAN and WAE-MMD models have been trained with a latent dimension of $d_{\mathcal{Z}} = 16$. The number of filters in the four convolutions (see the picture above) are [16, 32, 64, 128] for the encoder and [128, 64, 32, 16] for the decoder. Both sequences of convolution used a fixed filter size of 6x6. I&rsquo;ve trained both models for 300 epochs with Adam. The autoencoder&rsquo;s optimizer started with a learning rate of $10^{-3}$ while the discriminator optimizer (in WAE-GAN) started with a learning rate of $10^{-4}$.</p>
+<p>The following are some of the &ldquo;best&rdquo; samples (wrt my personal taste) that I picked: please <strong>make sure to lower the level of your audio output</strong><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> before playing! I suggest listening with headphones.</p>
+<table>
+<thead>
+<tr>
+<th><div align="center"> WAE-GAN </div></th>
+<th><div align="center"> WAE-MMD </div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waegan/035_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waemmd/032_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waegan/026_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waemmd/009_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waegan/031_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waemmd/010_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waegan/045_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waemmd/021_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waegan/050_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waemmd/000_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waegan/008_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waemmd/033_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waegan/040_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waemmd/038_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waegan/052_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waemmd/057_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waegan/011_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waemmd/062_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waegan/059_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/good/waemmd/063_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The next samples, instead, are randomly picked. Some of them totally lack the basic musical structures.</p>
+<table>
+<thead>
+<tr>
+<th><div align="center"> WAE-GAN </div></th>
+<th><div align="center"> WAE-MMD </div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/random/waegan/016_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/random/waemmd/025_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/random/waegan/023_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/random/waemmd/028_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/random/waegan/033_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/random/waemmd/035_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/random/waegan/041_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/random/waemmd/006_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/random/waegan/047_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/random/waemmd/039_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/random/waegan/053_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/random/waemmd/050_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The samples I was able to generete suffer the problem of <strong>over-fragmentation</strong>. The notes generated tend to be fragmented, sometimes yielding chaotic and unpleasant results. This problem has also been recognized in <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and the authors of MuseGAN proposed a new version of the model where their generator was equipped with binary neurons<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>, making it able to map the input noise directly into binary-valued output tensors. This partially solved the issue.</p>
+<p>The following samples come from a different set of WAE-GAN models I&rsquo;ve trained (doubling the number of filters for each convolutional layer, using $d_{\mathcal{Z}} = 128$ and more epochs), I&rsquo;ve cherry picked them hence they are not the &ldquo;average&rdquo; case, but the drums seem to be more predominant wrt the &ldquo;simpler&rdquo; models proposed above.</p>
+<table>
+<thead>
+<tr>
+<th><div align="center"> WAE-GANs </div></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/general/001_HD_converted_wae_gan_27.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/general/027_HD_converted_wae_gan_04.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/general/002_HD_converted_wae_gan_27.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/general/033_HD_converted_wae_gan_04.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/general/005_HD_converted_wae_gan_04.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/general/039_HD_converted_wae_gan_05.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/general/006_HD_converted_wae_gan_04.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/general/050_HD_converted_wae_gan_05.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/general/011_HD_converted_wae_gan_27.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/general/055_HD_converted_wae_gan_06.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/general/026_HD_converted_wae_gan_05.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/general/062_HD_converted_wae_gan_27.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="survey">Survey</h2>
+<p>TODO</p>
+<h1 id="references">References</h1>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>
+<a href="https://arxiv.org/abs/1711.01558" target="_blank" rel="noopener">Wasserstein Auto-Encoders</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>
+<a href="https://arxiv.org/abs/1709.06298" target="_blank" rel="noopener">MuseGAN: Multi-track Sequential Generative Adversarial Networks for Symbolic Music Generation and Accompaniment</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>I&rsquo;ve done the MIDI to MP3 conversions with the help of VLC and its integrated synthesizer 
+<a href="http://www.fluidsynth.org/" target="_blank" rel="noopener">FluidSynth</a>. I&rsquo;ve done no post-processing (eq, fx, mixing, mastering) so what you hear comes straight out-of-the box. The sounds produced are unpleasant: please think of them as part of an experiment and not music meant to be played. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>
+<a href="https://arxiv.org/abs/1605.09522" target="_blank" rel="noopener">Kernel Mean Embedding of Distributions:
+A Review and Beyond</a> page 52 <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p>
+<a href="https://arxiv.org/abs/1511.06434" target="_blank" rel="noopener">Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks</a> <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p>
+<a href="https://arxiv.org/abs/1802.03761" target="_blank" rel="noopener">On the Latent Space of Wasserstein Auto-Encoders</a> <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7" role="doc-endnote">
+<p>
+<a href="https://arxiv.org/abs/1711.10337" target="_blank" rel="noopener">Are GANs Created Equal? A Large-Scale Study</a> <a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8" role="doc-endnote">
+<p>
+<a href="https://arxiv.org/abs/1804.09399" target="_blank" rel="noopener">Convolutional Generative Adversarial Networks with Binary Neurons for Polyphonic Music Generation</a> <a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/generative-models/">generative-models</a>
+  
+  <a class="badge badge-light" href="/tag/autoencoders/">autoencoders</a>
+  
+  <a class="badge badge-light" href="/tag/wasserstein/">wasserstein</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://w00zie.github.io/post/wae/&amp;text=Music%20generation%20with%20Wasserstein%20Autoencoders" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://w00zie.github.io/post/wae/&amp;t=Music%20generation%20with%20Wasserstein%20Autoencoders" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Music%20generation%20with%20Wasserstein%20Autoencoders&amp;body=https://w00zie.github.io/post/wae/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://w00zie.github.io/post/wae/&amp;title=Music%20generation%20with%20Wasserstein%20Autoencoders" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Music%20generation%20with%20Wasserstein%20Autoencoders%20https://w00zie.github.io/post/wae/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://w00zie.github.io/post/wae/&amp;title=Music%20generation%20with%20Wasserstein%20Autoencoders" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+    
+      
+    
+    
+    
+    <div class="media author-card content-widget-hr">
+      
+        
+        <img class="avatar mr-3 avatar-circle" src="/author/giovanni-bindi/avatar_hu351c70bc5cdcd92ea95125a134391ca5_80941_270x270_fill_q90_lanczos_center.jpg" alt="Giovanni Bindi">
+      
+
+      <div class="media-body">
+        <h5 class="card-title"><a href="https://w00zie.github.io">Giovanni Bindi</a></h5>
+        <h6 class="card-subtitle">Student</h6>
+        <p class="card-text">I write stuff in my spare time.</p>
+        <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:gio.bindi@protonmail.com" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/gvnbnd" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/w00zie" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/python.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.66c553246b0f279a03be6e5597f72b52.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    Published with
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic Website Builder</a>
+    
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

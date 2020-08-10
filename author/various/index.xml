@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Various | Giovanni Bindi</title>
+    <link>https://w00zie.github.io/author/various/</link>
+      <atom:link href="https://w00zie.github.io/author/various/index.xml" rel="self" type="application/rss+xml" />
+    <description>Various</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>https://w00zie.github.io/media/giova.jpg</url>
+      <title>Various</title>
+      <link>https://w00zie.github.io/author/various/</link>
+    </image>
+    
+  </channel>
+</rss>

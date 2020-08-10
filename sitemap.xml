@@ -1,79 +1,82 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https:w00zie.github.io/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
+    <loc>https://w00zie.github.io/authors/</loc>
+    <lastmod>2020-08-01T16:46:13+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/post/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
+    <loc>https://w00zie.github.io/tag/autoencoders/</loc>
+    <lastmod>2020-08-01T16:46:13+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/post/svm_2/</loc>
-    <lastmod>2019-08-06T00:00:00+00:00</lastmod>
+    <loc>https://w00zie.github.io/tag/generative-models/</loc>
+    <lastmod>2020-08-01T16:46:13+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/post/dotfiles/</loc>
-    <lastmod>2019-08-04T00:00:00+00:00</lastmod>
+    <loc>https://w00zie.github.io/</loc>
+    <lastmod>2020-08-01T16:46:13+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/post/svm/</loc>
-    <lastmod>2019-08-02T00:00:00+00:00</lastmod>
+    <loc>https://w00zie.github.io/author/giovanni-bindi/</loc>
+    <lastmod>2020-08-01T16:46:13+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/post/quantum_1_linalg/</loc>
-    <lastmod>2019-04-23T00:00:00+00:00</lastmod>
+    <loc>https://w00zie.github.io/post/wae/</loc>
+    <lastmod>2020-08-01T16:46:13+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/authors/admin/</loc>
+    <loc>https://w00zie.github.io/post/</loc>
+    <lastmod>2020-08-01T16:46:13+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/authors/books/</loc>
+    <loc>https://w00zie.github.io/tags/</loc>
+    <lastmod>2020-08-01T16:46:13+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/authors/open/</loc>
+    <loc>https://w00zie.github.io/tag/wasserstein/</loc>
+    <lastmod>2020-08-01T16:46:13+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/authors/podcasts/</loc>
+    <loc>https://w00zie.github.io/author/articles-books/</loc>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/authors/wabri/</loc>
+    <loc>https://w00zie.github.io/categories/</loc>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/authors/</loc>
+    <loc>https://w00zie.github.io/author/courses/</loc>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/categories/</loc>
+    <loc>https://w00zie.github.io/author/gabriele-puliti/</loc>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/publication_types/</loc>
+    <loc>https://w00zie.github.io/publication_types/</loc>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/publication/</loc>
+    <loc>https://w00zie.github.io/publication/</loc>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/talk/</loc>
+    <loc>https://w00zie.github.io/talk/</loc>
   </url>
   
   <url>
-    <loc>https:w00zie.github.io/tags/</loc>
+    <loc>https://w00zie.github.io/author/various/</loc>
   </url>
   
 </urlset>

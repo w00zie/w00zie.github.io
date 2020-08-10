@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Articles &amp; Books | Giovanni Bindi</title>
+    <link>https://w00zie.github.io/author/articles-books/</link>
+      <atom:link href="https://w00zie.github.io/author/articles-books/index.xml" rel="self" type="application/rss+xml" />
+    <description>Articles &amp; Books</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>https://w00zie.github.io/media/giova.jpg</url>
+      <title>Articles &amp; Books</title>
+      <link>https://w00zie.github.io/author/articles-books/</link>
+    </image>
+    
+  </channel>
+</rss>
