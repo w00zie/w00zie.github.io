@@ -30,7 +30,7 @@
   
     
   
-  <meta name="description" content="Table of Contents  Introduction The data Theory  WAE-GAN WAE-MMD   Experiments details  Architechtures Prior Latent space dimensionality Adversarial training Cost function Hyperparameters   Results Survey    Introduction This is a project I started working on for my Machine Learning class.">
+  <meta name="description" content="Table of Contents  Introduction The data Theory  WAE-GAN WAE-MMD   Experiments details  Architechtures Prior Latent space dimensionality Adversarial training Cost function Hyperparameters   Results  Random Generation Reconstruction      Introduction This is a project I started working on for my Machine Learning class.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://w00zie.github.io/post/wae/">
@@ -254,7 +254,7 @@
   <meta property="og:site_name" content="Giovanni Bindi">
   <meta property="og:url" content="https://w00zie.github.io/post/wae/">
   <meta property="og:title" content="Music generation with Wasserstein Autoencoders | Giovanni Bindi">
-  <meta property="og:description" content="Table of Contents  Introduction The data Theory  WAE-GAN WAE-MMD   Experiments details  Architechtures Prior Latent space dimensionality Adversarial training Cost function Hyperparameters   Results Survey    Introduction This is a project I started working on for my Machine Learning class."><meta property="og:image" content="https://w00zie.github.io/media/giova.jpg">
+  <meta property="og:description" content="Table of Contents  Introduction The data Theory  WAE-GAN WAE-MMD   Experiments details  Architechtures Prior Latent space dimensionality Adversarial training Cost function Hyperparameters   Results  Random Generation Reconstruction      Introduction This is a project I started working on for my Machine Learning class."><meta property="og:image" content="https://w00zie.github.io/media/giova.jpg">
   <meta property="twitter:image" content="https://w00zie.github.io/media/giova.jpg"><meta property="og:locale" content="en-us">
   
     
@@ -304,7 +304,7 @@
       "url": "https://w00zie.github.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "Table of Contents  Introduction The data Theory  WAE-GAN WAE-MMD   Experiments details  Architechtures Prior Latent space dimensionality Adversarial training Cost function Hyperparameters   Results Survey    Introduction This is a project I started working on for my Machine Learning class."
+  "description": "Table of Contents  Introduction The data Theory  WAE-GAN WAE-MMD   Experiments details  Architechtures Prior Latent space dimensionality Adversarial training Cost function Hyperparameters   Results  Random Generation Reconstruction      Introduction This is a project I started working on for my Machine Learning class."
 }
 </script>
 
@@ -673,8 +673,12 @@
         <li><a href="#hyperparameters">Hyperparameters</a></li>
       </ul>
     </li>
-    <li><a href="#results">Results</a></li>
-    <li><a href="#survey">Survey</a></li>
+    <li><a href="#results">Results</a>
+      <ul>
+        <li><a href="#random-generation">Random Generation</a></li>
+        <li><a href="#reconstruction">Reconstruction</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
  </div>
@@ -906,7 +910,7 @@ $$</p>
 <h3 id="architechtures">Architechtures</h3>
 <p>Encoder $Q_\phi$, decoder $G_{\theta}$ and discriminator $D_{\gamma}$ are parametrized by deep neural nets. Given the structure of the data, binary-valued tensors of shape (H,W,5) (where 5, the number of instruments, plays naturally the role of the number of channels), both encoder and decoder are CNNs, while the discriminator (which acts in the latent space $\mathcal{Z}$) is a &ldquo;vanilla&rdquo; NN. You can check out the various models I&rsquo;ve coded 
 <a href="https://github.com/w00zie/wae_music" target="_blank" rel="noopener">here</a>, they are almost all equals except for the strides of the convolutions.</p>
-<p>The main architecture I used was inspired by DCGAN <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. In the following picture I&rsquo;m showing the encoder that, starting from the (192, 84, 5) input tensor, applies 4 convolutions with $[6,6]$ filters, followed by Batch Normalizations and ReLUs. The last layer employs a reshape (not shown in the picture) followed by a fully-connected layer that maps the previous inputs into a vector of size $dim(\mathcal{Z}) = d_{\mathcal{Z}}$ (in this case I went with $d_{\mathcal{Z}} = 8$).</p>
+<p>The main architecture I used was inspired by DCGAN <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. In the following picture I&rsquo;m showing the encoder that, starting from the (192, 84, 5) input tensor, applies 4 convolutions with $[6,6]$ filters, followed by Batch Normalizations and ReLUs. The last layer employs a reshape (not shown in the picture) followed by a (small dropout of 0.2 and a) fully-connected layer that maps the previous inputs into a vector of size $dim(\mathcal{Z}) = d_{\mathcal{Z}}$ (in the following picture $d_{\mathcal{Z}} = 8$).</p>
 
 
 
@@ -946,7 +950,7 @@ $$</p>
 </figure>
 
 <p>The decoder acts simmetrically wrt the encoder, using 
-<a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2DTranspose" target="_blank" rel="noopener">2D transposed convolutions</a> instead of convolutions. The discriminator network maps a vector from $\mathcal{Z}$ to $[0,1]$ through 6 dense layers of 512 neurons followed by ReLUs.</p>
+<a href="https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2DTranspose" target="_blank" rel="noopener">2D transposed convolutions</a> instead of convolutions. The discriminator network maps a vector from $\mathcal{Z}$ to $[0,1]$ through 6 dense layers followed by ReLUs.</p>
 <h3 id="prior">Prior</h3>
 <p>I&rsquo;ve used a Gaussian prior $P_Z = \mathcal{N} \big ( 0, \sigma_z^2 \cdot I_{d_z} \big )$ where the variance $\sigma_z^2$ is an hyperparameter.</p>
 <h3 id="latent-space-dimensionality">Latent space dimensionality</h3>
@@ -966,7 +970,7 @@ $$</p>
 <h3 id="hyperparameters">Hyperparameters</h3>
 <p>Since there is no objective measure of performace for this kind of task, running an hyperparameter optimization procedure is hard. I&rsquo;ve adjusted the parameters manually and so the results I obtained might not be the best that these model can produce.</p>
 <h2 id="results">Results</h2>
-<p>As mentioned in the data section, the input samples are binary-valued tensors of shape (192, 84, 5). The decoder, although, maps a latent code into $[0, 1]^{192 \times 84 \times 5}$ through the action of the sigmoid function. These output tensors $\hat{x}$ must then be <em>binarized</em>, and I&rsquo;ve used two strategies to do so:</p>
+<p>As mentioned in the data section, the input samples are binary-valued tensors of shape (192, 84, 5). The decoder, although, maps a latent code into $[0, 1]^{192 \times 84 \times 5}$ through the action of the sigmoid function. These output tensors $\hat{x}$ must then be <em>binarized</em>, and I&rsquo;ve tried two strategies to do so:</p>
 <ol>
 <li>
 <p>Hard thresholding (HT): The resulting tensor entry $\hat{x}_{ijk}$ needs to be greater than a fixed threshold (0.5) in order to be mapped to 1.
@@ -974,15 +978,168 @@ $$\hat{x}_{ijk}^{HT} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 0 &amp; \text {o.w }\end{cases}$$</p>
 </li>
 <li>
-<p>Bernoulli sampling (BS): The resulting tensor entry $\hat{x}_{ijk}$ needs to be greater than a sample from the uniform distribution over scalars between 0 and 1.
+<p>Bernoulli sampling (BS) (by the authors of MuseGAN): The resulting tensor entry $\hat{x}_{ijk}$ needs to be greater than a sample from the uniform distribution over scalars between 0 and 1.
 $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &gt; b \sim \mathcal{U}[0,1] \\<br>
 0 &amp; \text {o.w }\end{cases}$$</p>
 </li>
 </ol>
 <p>I&rsquo;m presenting samples binarized with the HT method.</p>
 <hr>
-<p>For a &ldquo;fair&rdquo; comparison the following results have been obtained with the same architecture and hyperparameters. Both WAE-GAN and WAE-MMD models have been trained with a latent dimension of $d_{\mathcal{Z}} = 16$. The number of filters in the four convolutions (see the picture above) are [16, 32, 64, 128] for the encoder and [128, 64, 32, 16] for the decoder. Both sequences of convolution used a fixed filter size of 6x6. I&rsquo;ve trained both models for 300 epochs with Adam. The autoencoder&rsquo;s optimizer started with a learning rate of $10^{-3}$ while the discriminator optimizer (in WAE-GAN) started with a learning rate of $10^{-4}$.</p>
-<p>The following are some of the &ldquo;best&rdquo; samples (wrt my personal taste) that I picked: please <strong>make sure to lower the level of your audio output</strong><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> before playing! I suggest listening with headphones.</p>
+<p>For a &ldquo;fair&rdquo; comparison the following results have been obtained with the same architecture and hyperparameters. Both WAE-GAN and WAE-MMD models have been trained with a latent dimension of $d_{\mathcal{Z}} = 128$. The number of filters in the four convolutions (see the picture above) are [8, 16, 32, 64] for the encoder and [64, 32, 16, 8] for the decoder. Both sequences of convolution used a fixed filter size of 6x6. I&rsquo;ve trained both models for 500 epochs with Adam. Both autoencoder&rsquo;s and discriminator&rsquo;s optimizer started with a learning rate of $10^{-4}$ and both employed a decay to $\approx 10^{-5}$.</p>
+<p>
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-wae-gan-loss">
+
+
+  <a data-fancybox="" href="/post/wae/img/gan_wae_loss_hua84152800d785313dec94bb60ea81f41_38988_2000x2000_fit_lanczos_2.png" data-caption="WAE-GAN Loss">
+
+
+  <img data-src="/post/wae/img/gan_wae_loss_hua84152800d785313dec94bb60ea81f41_38988_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="640" height="480">
+</a>
+
+
+  
+  
+  <figcaption data-pre="Figure " data-post=":" class="numbered">
+    WAE-GAN Loss
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-wae-gan-discriminator-loss">
+
+
+  <a data-fancybox="" href="/post/wae/img/gan_discrim_hu3d6d9768a3a4a2b640775946fe41a839_58542_2000x2000_fit_lanczos_2.png" data-caption="WAE-GAN Discriminator Loss">
+
+
+  <img data-src="/post/wae/img/gan_discrim_hu3d6d9768a3a4a2b640775946fe41a839_58542_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="640" height="480">
+</a>
+
+
+  
+  
+  <figcaption data-pre="Figure " data-post=":" class="numbered">
+    WAE-GAN Discriminator Loss
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-wae-mmd-loss">
+
+
+  <a data-fancybox="" href="/post/wae/img/mmd_wae_loss_hu28c1ca953174befbae54124e25204875_26143_2000x2000_fit_lanczos_2.png" data-caption="WAE-MMD Loss">
+
+
+  <img data-src="/post/wae/img/mmd_wae_loss_hu28c1ca953174befbae54124e25204875_26143_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="640" height="480">
+</a>
+
+
+  
+  
+  <figcaption data-pre="Figure " data-post=":" class="numbered">
+    WAE-MMD Loss
+  </figcaption>
+
+
+</figure>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<figure id="figure-wae-mmd-penalty">
+
+
+  <a data-fancybox="" href="/post/wae/img/mmd_penalty_hud51e3a5e3de122a467f8387f03d75af9_31553_2000x2000_fit_lanczos_2.png" data-caption="WAE-MMD Penalty">
+
+
+  <img data-src="/post/wae/img/mmd_penalty_hud51e3a5e3de122a467f8387f03d75af9_31553_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="640" height="480">
+</a>
+
+
+  
+  
+  <figcaption data-pre="Figure " data-post=":" class="numbered">
+    WAE-MMD Penalty
+  </figcaption>
+
+
+</figure>
+</p>
+<h3 id="random-generation">Random Generation</h3>
+<p>The following are a few of the &ldquo;best&rdquo; samples (wrt my personal taste) that I picked: please <strong>make sure to lower the level of your audio output</strong><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> before playing! I suggest listening with headphones.</p>
 <table>
 <thead>
 <tr>
@@ -1010,7 +1167,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/good/waegan/035_HD.mp3" type="audio/mpeg">
+    <source src="music/good/waegan/015_HD_b.mp3" type="audio/mpeg">
   </audio>
 </td>
 <td>
@@ -1031,51 +1188,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/good/waemmd/032_HD.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/good/waegan/026_HD.mp3" type="audio/mpeg">
-  </audio>
-</td>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/good/waemmd/009_HD.mp3" type="audio/mpeg">
+    <source src="music/good/waemmd/mmd_02_09_015_HD_b.mp3" type="audio/mpeg">
   </audio>
 </td>
 </tr>
@@ -1098,7 +1211,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/good/waegan/031_HD.mp3" type="audio/mpeg">
+    <source src="music/good/waegan/016_HD_b.mp3" type="audio/mpeg">
   </audio>
 </td>
 <td>
@@ -1119,51 +1232,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/good/waemmd/010_HD.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/good/waegan/045_HD.mp3" type="audio/mpeg">
-  </audio>
-</td>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/good/waemmd/021_HD.mp3" type="audio/mpeg">
+    <source src="music/good/waemmd/mmd_02_09_025_HD_b.mp3" type="audio/mpeg">
   </audio>
 </td>
 </tr>
@@ -1186,7 +1255,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/good/waegan/050_HD.mp3" type="audio/mpeg">
+    <source src="music/good/waegan/024_HD_b.mp3" type="audio/mpeg">
   </audio>
 </td>
 <td>
@@ -1207,51 +1276,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/good/waemmd/000_HD.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/good/waegan/008_HD.mp3" type="audio/mpeg">
-  </audio>
-</td>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/good/waemmd/033_HD.mp3" type="audio/mpeg">
+    <source src="music/good/waemmd/mmd_02_09_048_HD_b.mp3" type="audio/mpeg">
   </audio>
 </td>
 </tr>
@@ -1274,7 +1299,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/good/waegan/040_HD.mp3" type="audio/mpeg">
+    <source src="music/good/waegan/037_HD_b.mp3" type="audio/mpeg">
   </audio>
 </td>
 <td>
@@ -1295,51 +1320,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/good/waemmd/038_HD.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/good/waegan/052_HD.mp3" type="audio/mpeg">
-  </audio>
-</td>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/good/waemmd/057_HD.mp3" type="audio/mpeg">
+    <source src="music/good/waemmd/mmd_02_09_052_HD_b.mp3" type="audio/mpeg">
   </audio>
 </td>
 </tr>
@@ -1362,7 +1343,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/good/waegan/011_HD.mp3" type="audio/mpeg">
+    <source src="music/good/waegan/058_HD_b.mp3" type="audio/mpeg">
   </audio>
 </td>
 <td>
@@ -1383,60 +1364,20 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/good/waemmd/062_HD.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/good/waegan/059_HD.mp3" type="audio/mpeg">
-  </audio>
-</td>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/good/waemmd/063_HD.mp3" type="audio/mpeg">
+    <source src="music/good/waemmd/mmd_02_09_055_HD_b.mp3" type="audio/mpeg">
   </audio>
 </td>
 </tr>
 </tbody>
 </table>
-<p>The next samples, instead, are randomly picked. Some of them totally lack the basic musical structures.</p>
+<p>The samples I was able to generete lightly suffer the problem of <strong>over-fragmentation</strong>. The notes generated tend to be fragmented, sometimes yielding chaotic and unpleasant results. This problem has also been recognized in <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and the authors of MuseGAN proposed a new version of the model where their generator was equipped with binary neurons<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>, making it able to map the input noise directly into binary-valued output tensors. This partially solved the issue.</p>
+<p>In my opinion WAE-GAN was able to produce better results: this was also the opinion of the authors of WAE.</p>
+<h3 id="reconstruction">Reconstruction</h3>
+<p>These are a few reconstructed samples from the test set.</p>
 <table>
 <thead>
 <tr>
+<th><div align="center"> Original Sample </div></th>
 <th><div align="center"> WAE-GAN </div></th>
 <th><div align="center"> WAE-MMD </div></th>
 </tr>
@@ -1461,7 +1402,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/random/waegan/016_HD.mp3" type="audio/mpeg">
+    <source src="music/recon/007_true_HD.mp3" type="audio/mpeg">
   </audio>
 </td>
 <td>
@@ -1482,30 +1423,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/random/waemmd/025_HD.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/random/waegan/023_HD.mp3" type="audio/mpeg">
+    <source src="music/recon/gan_007_fake_HD.mp3" type="audio/mpeg">
   </audio>
 </td>
 <td>
@@ -1526,7 +1444,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/random/waemmd/028_HD.mp3" type="audio/mpeg">
+    <source src="music/recon/mmd_007_fake_HD.mp3" type="audio/mpeg">
   </audio>
 </td>
 </tr>
@@ -1549,7 +1467,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/random/waegan/033_HD.mp3" type="audio/mpeg">
+    <source src="music/recon/012_true_HD.mp3" type="audio/mpeg">
   </audio>
 </td>
 <td>
@@ -1570,30 +1488,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/random/waemmd/035_HD.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/random/waegan/041_HD.mp3" type="audio/mpeg">
+    <source src="music/recon/gan_012_fake_HD.mp3" type="audio/mpeg">
   </audio>
 </td>
 <td>
@@ -1614,7 +1509,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/random/waemmd/006_HD.mp3" type="audio/mpeg">
+    <source src="music/recon/mmd_012_fake_HD.mp3" type="audio/mpeg">
   </audio>
 </td>
 </tr>
@@ -1637,7 +1532,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/random/waegan/047_HD.mp3" type="audio/mpeg">
+    <source src="music/recon/020_true_HD.mp3" type="audio/mpeg">
   </audio>
 </td>
 <td>
@@ -1658,7 +1553,28 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/random/waemmd/039_HD.mp3" type="audio/mpeg">
+    <source src="music/recon/gan_020_fake_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/recon/mmd_020_fake_HD.mp3" type="audio/mpeg">
   </audio>
 </td>
 </tr>
@@ -1681,7 +1597,7 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/random/waegan/053_HD.mp3" type="audio/mpeg">
+    <source src="music/recon/023_true_HD.mp3" type="audio/mpeg">
   </audio>
 </td>
 <td>
@@ -1702,290 +1618,99 @@ $$\hat{x}_{ijk}^{BS} = \begin{cases} 1 &amp; \text{if } \hspace{10pt} x_{ijk} &g
 
 
   <audio controls>
-    <source src="music/random/waemmd/050_HD.mp3" type="audio/mpeg">
+    <source src="music/recon/gan_023_fake_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/recon/mmd_023_fake_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+</tr>
+<tr>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/recon/042_true_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/recon/gan_042_fake_HD.mp3" type="audio/mpeg">
+  </audio>
+</td>
+<td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <audio controls>
+    <source src="music/recon/mmd_042_fake_HD.mp3" type="audio/mpeg">
   </audio>
 </td>
 </tr>
 </tbody>
 </table>
-<p>The samples I was able to generete suffer the problem of <strong>over-fragmentation</strong>. The notes generated tend to be fragmented, sometimes yielding chaotic and unpleasant results. This problem has also been recognized in <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and the authors of MuseGAN proposed a new version of the model where their generator was equipped with binary neurons<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup>, making it able to map the input noise directly into binary-valued output tensors. This partially solved the issue.</p>
-<p>The following samples come from a different set of WAE-GAN models I&rsquo;ve trained (doubling the number of filters for each convolutional layer, using $d_{\mathcal{Z}} = 128$ and more epochs), I&rsquo;ve cherry picked them hence they are not the &ldquo;average&rdquo; case, but the drums seem to be more predominant wrt the &ldquo;simpler&rdquo; models proposed above.</p>
-<table>
-<thead>
-<tr>
-<th><div align="center"> WAE-GANs </div></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/general/001_HD_converted_wae_gan_27.mp3" type="audio/mpeg">
-  </audio>
-</td>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/general/027_HD_converted_wae_gan_04.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/general/002_HD_converted_wae_gan_27.mp3" type="audio/mpeg">
-  </audio>
-</td>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/general/033_HD_converted_wae_gan_04.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/general/005_HD_converted_wae_gan_04.mp3" type="audio/mpeg">
-  </audio>
-</td>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/general/039_HD_converted_wae_gan_05.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/general/006_HD_converted_wae_gan_04.mp3" type="audio/mpeg">
-  </audio>
-</td>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/general/050_HD_converted_wae_gan_05.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/general/011_HD_converted_wae_gan_27.mp3" type="audio/mpeg">
-  </audio>
-</td>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/general/055_HD_converted_wae_gan_06.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-<tr>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/general/026_HD_converted_wae_gan_05.mp3" type="audio/mpeg">
-  </audio>
-</td>
-<td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <audio controls>
-    <source src="music/general/062_HD_converted_wae_gan_27.mp3" type="audio/mpeg">
-  </audio>
-</td>
-</tr>
-</tbody>
-</table>
-<h2 id="survey">Survey</h2>
-<p>TODO</p>
+<p>Qualitatively speaking both models gave comparable results in terms of recostruction capabilities. It&rsquo;s clear that they both struggle reconstructing the drums. Drums events are more sparse and they might need wider (and possibly more) filters in order to be reconstructed clearly.</p>
 <h1 id="references">References</h1>
 <section class="footnotes" role="doc-endnotes">
 <hr>
