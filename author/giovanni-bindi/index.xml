@@ -5,12 +5,195 @@
     <link>https://w00zie.github.io/author/giovanni-bindi/</link>
       <atom:link href="https://w00zie.github.io/author/giovanni-bindi/index.xml" rel="self" type="application/rss+xml" />
     <description>Giovanni Bindi</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Aug 2020 16:46:13 +0200</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 12 Dec 2020 17:09:13 +0200</lastBuildDate>
     <image>
       <url>https://w00zie.github.io/media/giova.jpg</url>
       <title>Giovanni Bindi</title>
       <link>https://w00zie.github.io/author/giovanni-bindi/</link>
     </image>
+    
+    <item>
+      <title>Winning the CHSH game with Cirq and Bayesian Optimization</title>
+      <link>https://w00zie.github.io/post/bell/</link>
+      <pubDate>Sat, 12 Dec 2020 17:09:13 +0200</pubDate>
+      <guid>https://w00zie.github.io/post/bell/</guid>
+      <description>&lt;div align=&#34;center&#34;&gt; &lt;h2&gt;Table of Contents&lt;/h2&gt;
+&lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#description-of-the-game&#34;&gt;Description of the game&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#deterministic-strategy&#34;&gt;Deterministic strategy&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#quantum-strategy&#34;&gt;Quantum strategy&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#winning-at-the-game-without-designing-a-winning-strategy&#34;&gt;Winning at the game without designing a winning strategy&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+ &lt;/div&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In this post we&amp;rsquo;ll be going through a simple experiment I&amp;rsquo;ve set up in order to violate the Bell inequality.&lt;/p&gt;
+&lt;p&gt;The goal is to &amp;ldquo;win&amp;rdquo; (one of the formulations of) the CHSH game: this &amp;ldquo;game&amp;rdquo; was proposed by Clauser, Horn, Shimony and Holt in their famous 1969 PRL paper 
+&lt;a href=&#34;https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.23.880&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;1&lt;/a&gt; as a generalizatio of 1964 Bell&amp;rsquo;s Theorem. The formulation we&amp;rsquo;ll be dealing with is the one proposed by Mark Wilde in his book 
+&lt;a href=&#34;http://www.markwilde.com/qit-notes.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;2&lt;/a&gt; and by Ronald de Wolf in his lecture notes 
+&lt;a href=&#34;https://homepages.cwi.nl/~rdewolf/qcnotes.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;3&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can find the code 
+&lt;a href=&#34;https://github.com/w00zie/pqc_chsh&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;description-of-the-game&#34;&gt;Description of the game&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s the game description by Mark Wilde:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This game is a 2-player game where the two players, Alice and Bob, are spatially separated from each other from the time that the game starts until it is over. The game begins with a referee selecting two bits $x$ and $y$ uniformly at random. The referee then sends $x$ to Alice and $y$ to Bob. Alice and Bob are not allowed to communicate with each other in any way at this point. Alice sends back to the referee a bit $a$, and Bob sends back a bit $b$. Since they are spatially separated, Alice’s response bit $a$ cannot depend on Bob’s input bit $y$, and similarly, Bob’s response bit $b$ cannot depend on Alice’s input bit $x$. After receiving the response bits $a$ and $b$, the referee determines if the &lt;em&gt;AND&lt;/em&gt; of $x$ and $y$ is equal to the exclusive &lt;em&gt;OR&lt;/em&gt; of $a$ and $b$. If so, then Alice and Bob win the game.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Given that, the winning conditions is&lt;/p&gt;
+&lt;p&gt;$$
+x \land y = a \oplus b
+$$&lt;/p&gt;
+&lt;h2 id=&#34;deterministic-strategy&#34;&gt;Deterministic strategy&lt;/h2&gt;
+&lt;p&gt;A deterministic strategy would have Alice select a bit $a_x$ conditioned on the bit $x$ that she receives, and similarly, Bob would select a bit $b_y$ conditioned on $y$. The following table presents the winning conditions for the four different values of $x$ and $y$ with this deterministic strategy:&lt;/p&gt;
+&lt;center&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;$x$&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;$y$&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;$x \land y$&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;$a_x \oplus b_y$&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$a_0 \oplus b_0$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$a_0 \oplus b_1$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$a_1 \oplus b_0$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;$a_1 \oplus b_1$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/center&gt;
+&lt;p&gt;At most, only three out of four of them can be satisfied, so that the maximal winning probability with a classical deterministic strategy is at most $3 / 4$. We can then see that a strategy for them to achieve this upper bound is for Alice and Bob always to return $a = 0$ and $b = 0$ no matter the values of $x$ and $y$.&lt;/p&gt;
+&lt;h2 id=&#34;quantum-strategy&#34;&gt;Quantum strategy&lt;/h2&gt;
+&lt;p&gt;Now consider the same problem but where Alice and Bob are supplied with a shared 2-qubit system initialized to the entangled state&lt;/p&gt;
+&lt;p&gt;$$
+\frac{1}{\sqrt{2}} (|00\rangle - |11\rangle)
+$$&lt;/p&gt;
+&lt;p&gt;The strategy is the following: if $x = 0$ then Alice applies $R(-\pi/16)$ to her qubit and if $x = 1$ she applies $R(3\pi/16)$, where $R(\theta)$ denotes a rotation of $\theta$:&lt;/p&gt;
+&lt;p&gt;$$
+R(\theta) = \begin{bmatrix} cos(\theta) &amp;amp; -sin(\theta) \\ sin(\theta) &amp;amp; \cos(\theta) \end{bmatrix}
+$$&lt;/p&gt;
+&lt;p&gt;Bob’s procedure is the same, depending on his input bit $y$.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;If Alice now rotates her qubit by $\theta_A$ and Bob rotates his qubit by $\theta_B$ then the state becomes:&lt;/p&gt;
+&lt;p&gt;$$
+\frac{1}{\sqrt{2}} (cos(\theta_A + \theta_B))(|00\rangle - |11\rangle) + \sin(\theta_A + \theta_B)(|01\rangle + |10\rangle)
+$$&lt;/p&gt;
+&lt;p&gt;Measuring in the computational basis we see that, after the measurements, the probability that $a \oplus b = 0$ is $cos(\theta_A + \theta_B)^2$. If $x \land y = 0$ then $\theta_A + \theta_B = \pm \pi / 8$, else if $x \land y = 1$ then $\theta_A + \theta_B = 3 \pi / 8$.&lt;/p&gt;
+&lt;p&gt;The winning condition is then satisfied with probability $cos(\pi / 8)^2 \approx 0.853$, for all four input possibilities, showing that quantum entanglement allows Alice and Bob to win the game with a probability that&amp;rsquo;s higher than what the best classical strategy can achieve. Tsirelson [] showed that $cos(\pi / 8)^2$ is the best that quantum strategies can
+do for CHSH, even if they are allowed to use much more entanglement than one Bell state.&lt;/p&gt;
+&lt;h2 id=&#34;winning-at-the-game-without-designing-a-winning-strategy&#34;&gt;Winning at the game without designing a winning strategy&lt;/h2&gt;
+&lt;p&gt;Quantum computing (QC) is one of the currently &amp;ldquo;hot&amp;rdquo; research areas, gaining substantious advantages year after year.
+Many industries and Universities are developing interesting tools for experimenting with the power of QC, such as IBM&amp;rsquo;s ]
+&lt;a href=&#34;https://qiskit.org&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;qiskit&lt;/a&gt; and Google&amp;rsquo;s 
+&lt;a href=&#34;https://quantumai.google/cirq&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cirq&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;These two examples are Python-based frameworks for programming quantum computers and, in this experiment, I used Cirq. My idea is simple: I wanted to construct a parameterized quantum circuit (PQC) that, along with an optimization strategy, could find the best parameters for winning at the CHSH game.&lt;/p&gt;
+&lt;p&gt;The optimization strategy I employed is Bayesian Optimization, which is a strategy for global optimization of black-box functions. Bayesian optimization is particularly advantageous for problems where the function we want to maximize is difficult to evaluate, is a black box with some known structure, relies upon less than 20 dimensions, and where derivatives are not evaluated 
+&lt;a href=&#34;https://arxiv.org/abs/1807.02811&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;4&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Turns out this is exactly my setting, since I want to maximize the probability of winning the CHSH game through a series of simulations of a few-parameterized-gates quantum circuit. The circuit I designed is the following&lt;/p&gt;
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-parameterized-quantum-circuit&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://w00zie.github.io/post/bell/img/circuit_hu4c0bf548b1fa199fd10b3a8d446cb0bc_14743_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Parameterized Quantum Circuit&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://w00zie.github.io/post/bell/img/circuit_hu4c0bf548b1fa199fd10b3a8d446cb0bc_14743_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;513&#34; height=&#34;204&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    Parameterized Quantum Circuit
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+&lt;p&gt;where the four qubits are initialized to $|0\rangle$. The transformations which operate on these qubits are Hadamard gates (denoted by $H$), rotations $R_X$ and $R_Z$ (respectively by the $X$ and $Z$ axis) and CNOTs. Rotations and controlled-not gates are parameterized by the $x*$ you see in the pictures: I&amp;rsquo;ve constrained the rotational parameters into $[0, 2\pi]$ and the exponents of the CNOTs to $[-2, 2]$. The last *moment* of the circuit is the one dedicated to Measurements, which happen in the computational basis.&lt;/p&gt;
+&lt;p&gt;For every set of fixed parameters a simulation of $N=5000$ runs is operated and, in the end, a winning statistic is calculated as $N^w / N \in [0, 1]$, where $N^w$ is the number of times that the winning condition is satisfied. This function is then maximized through 
+&lt;a href=&#34;https://github.com/fmfn/BayesianOptimization&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bayesian Optimization&lt;/a&gt; resulting in a set of parameters which are able to win the game:&lt;/p&gt;
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure id=&#34;figure-convergence-of-bo&#34;&gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://w00zie.github.io/post/bell/img/bo_hudeda4c1d4ab9458826b6547fa4ae320a_55004_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;&amp;amp;lsquo;&amp;amp;lsquo;Convergence&amp;amp;rsquo;&amp;amp;rsquo; of BO&#34;&gt;
+
+
+  &lt;img data-src=&#34;https://w00zie.github.io/post/bell/img/bo_hudeda4c1d4ab9458826b6547fa4ae320a_55004_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;720&#34; height=&#34;496&#34;&gt;
+&lt;/a&gt;
+
+
+  
+  
+  &lt;figcaption&gt;
+    &amp;lsquo;&amp;lsquo;Convergence&amp;rsquo;&amp;rsquo; of BO
+  &lt;/figcaption&gt;
+
+
+&lt;/figure&gt;
+
+</description>
+    </item>
     
     <item>
       <title>Music generation with Wasserstein Autoencoders</title>
