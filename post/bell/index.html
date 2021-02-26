@@ -737,11 +737,12 @@ $$</p>
 \frac{1}{\sqrt{2}} (cos(\theta_A + \theta_B))(|00\rangle - |11\rangle) + \sin(\theta_A + \theta_B)(|01\rangle + |10\rangle)
 $$</p>
 <p>Measuring in the computational basis we see that, after the measurements, the probability that $a \oplus b = 0$ is $cos(\theta_A + \theta_B)^2$. If $x \land y = 0$ then $\theta_A + \theta_B = \pm \pi / 8$, else if $x \land y = 1$ then $\theta_A + \theta_B = 3 \pi / 8$.</p>
-<p>The winning condition is then satisfied with probability $cos(\pi / 8)^2 \approx 0.853$, for all four input possibilities, showing that quantum entanglement allows Alice and Bob to win the game with a probability that&rsquo;s higher than what the best classical strategy can achieve. Tsirelson [] showed that $cos(\pi / 8)^2$ is the best that quantum strategies can
+<p>The winning condition is then satisfied with probability $cos(\pi / 8)^2 \approx 0.853$, for all four input possibilities, showing that quantum entanglement allows Alice and Bob to win the game with a probability that&rsquo;s higher than what the best classical strategy can achieve. Tsirelson 
+<a href="https://www.tau.ac.il/~tsirel/download/qbell80.html" target="_blank" rel="noopener">5</a> showed that $cos(\pi / 8)^2$ is the best that quantum strategies can
 do for CHSH, even if they are allowed to use much more entanglement than one Bell state.</p>
 <h2 id="winning-at-the-game-without-designing-a-winning-strategy">Winning at the game without designing a winning strategy</h2>
 <p>Quantum computing (QC) is one of the currently &ldquo;hot&rdquo; research areas, gaining substantious advantages year after year.
-Many industries and Universities are developing interesting tools for experimenting with the power of QC, such as IBM&rsquo;s ]
+Many industries and Universities are developing interesting tools for experimenting with the power of QC, such as IBM&rsquo;s 
 <a href="https://qiskit.org" target="_blank" rel="noopener">qiskit</a> and Google&rsquo;s 
 <a href="https://quantumai.google/cirq" target="_blank" rel="noopener">cirq</a>.</p>
 <p>These two examples are Python-based frameworks for programming quantum computers and, in this experiment, I used Cirq. My idea is simple: I wanted to construct a parameterized quantum circuit (PQC) that, along with an optimization strategy, could find the best parameters for winning at the CHSH game.</p>
