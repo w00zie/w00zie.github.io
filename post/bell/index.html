@@ -771,10 +771,10 @@ Many industries and Universities are developing interesting tools for experiment
 <figure id="figure-parameterized-quantum-circuit">
 
 
-  <a data-fancybox="" href="/post/bell/img/circuit_hu4c0bf548b1fa199fd10b3a8d446cb0bc_14743_2000x2000_fit_lanczos_2.png" data-caption="Parameterized Quantum Circuit">
+  <a data-fancybox="" href="/post/bell/img/circuit_hue28cdff5686ffcfa94a7504cb0e5e18c_21604_2000x2000_fit_lanczos_2.png" data-caption="Parameterized Quantum Circuit">
 
 
-  <img data-src="/post/bell/img/circuit_hu4c0bf548b1fa199fd10b3a8d446cb0bc_14743_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="513" height="204">
+  <img data-src="/post/bell/img/circuit_hue28cdff5686ffcfa94a7504cb0e5e18c_21604_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="599" height="264">
 </a>
 
 
@@ -788,7 +788,7 @@ Many industries and Universities are developing interesting tools for experiment
 </figure>
 
 <p>where the four qubits are initialized to $|0\rangle$. The transformations which operate on these qubits are Hadamard gates (denoted by $H$), rotations $R_X$ and $R_Z$ (respectively by the $X$ and $Z$ axis) and CNOTs. Rotations and controlled-not gates are parameterized by the $x*$ you see in the pictures: I&rsquo;ve constrained the rotational parameters into $[0, 2\pi]$ and the exponents of the CNOTs to $[-2, 2]$. The last *moment* of the circuit is the one dedicated to Measurements, which happen in the computational basis.</p>
-<p>For every set of fixed parameters a simulation of $N=5000$ runs is operated and, in the end, a winning statistic is calculated as $N^w / N \in [0, 1]$, where $N^w$ is the number of times that the winning condition is satisfied. This function is then maximized through 
+<p>For every set of fixed parameters a simulation of $N=1000$ runs is operated and, in the end, a winning statistic is calculated as $N^w / N \in [0, 1]$, where $N^w$ is the number of times that the winning condition is satisfied. This function is then maximized through 
 <a href="https://github.com/fmfn/BayesianOptimization" target="_blank" rel="noopener">Bayesian Optimization</a> resulting in a set of parameters which are able to win the game:</p>
 
 
@@ -812,10 +812,10 @@ Many industries and Universities are developing interesting tools for experiment
 <figure id="figure-convergence-of-bo">
 
 
-  <a data-fancybox="" href="/post/bell/img/bo_hudeda4c1d4ab9458826b6547fa4ae320a_55004_2000x2000_fit_lanczos_2.png" data-caption="&amp;lsquo;&amp;lsquo;Convergence&amp;rsquo;&amp;rsquo; of BO">
+  <a data-fancybox="" href="/post/bell/img/bo_hu999867a8f78e53b855f99f20ee9487ec_63804_2000x2000_fit_lanczos_2.png" data-caption="&amp;lsquo;&amp;lsquo;Convergence&amp;rsquo;&amp;rsquo; of BO">
 
 
-  <img data-src="/post/bell/img/bo_hudeda4c1d4ab9458826b6547fa4ae320a_55004_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="720" height="496">
+  <img data-src="/post/bell/img/bo_hu999867a8f78e53b855f99f20ee9487ec_63804_2000x2000_fit_lanczos_2.png" class="lazyload" alt="" width="720" height="496">
 </a>
 
 

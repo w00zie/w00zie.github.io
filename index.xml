@@ -136,10 +136,10 @@ Many industries and Universities are developing interesting tools for experiment
 &lt;figure id=&#34;figure-parameterized-quantum-circuit&#34;&gt;
 
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;https://w00zie.github.io/post/bell/img/circuit_hu4c0bf548b1fa199fd10b3a8d446cb0bc_14743_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Parameterized Quantum Circuit&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://w00zie.github.io/post/bell/img/circuit_hue28cdff5686ffcfa94a7504cb0e5e18c_21604_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;Parameterized Quantum Circuit&#34;&gt;
 
 
-  &lt;img data-src=&#34;https://w00zie.github.io/post/bell/img/circuit_hu4c0bf548b1fa199fd10b3a8d446cb0bc_14743_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;513&#34; height=&#34;204&#34;&gt;
+  &lt;img data-src=&#34;https://w00zie.github.io/post/bell/img/circuit_hue28cdff5686ffcfa94a7504cb0e5e18c_21604_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;599&#34; height=&#34;264&#34;&gt;
 &lt;/a&gt;
 
 
@@ -153,7 +153,7 @@ Many industries and Universities are developing interesting tools for experiment
 &lt;/figure&gt;
 
 &lt;p&gt;where the four qubits are initialized to $|0\rangle$. The transformations which operate on these qubits are Hadamard gates (denoted by $H$), rotations $R_X$ and $R_Z$ (respectively by the $X$ and $Z$ axis) and CNOTs. Rotations and controlled-not gates are parameterized by the $x*$ you see in the pictures: I&amp;rsquo;ve constrained the rotational parameters into $[0, 2\pi]$ and the exponents of the CNOTs to $[-2, 2]$. The last *moment* of the circuit is the one dedicated to Measurements, which happen in the computational basis.&lt;/p&gt;
-&lt;p&gt;For every set of fixed parameters a simulation of $N=5000$ runs is operated and, in the end, a winning statistic is calculated as $N^w / N \in [0, 1]$, where $N^w$ is the number of times that the winning condition is satisfied. This function is then maximized through 
+&lt;p&gt;For every set of fixed parameters a simulation of $N=1000$ runs is operated and, in the end, a winning statistic is calculated as $N^w / N \in [0, 1]$, where $N^w$ is the number of times that the winning condition is satisfied. This function is then maximized through 
 &lt;a href=&#34;https://github.com/fmfn/BayesianOptimization&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bayesian Optimization&lt;/a&gt; resulting in a set of parameters which are able to win the game:&lt;/p&gt;
 
 
@@ -177,10 +177,10 @@ Many industries and Universities are developing interesting tools for experiment
 &lt;figure id=&#34;figure-convergence-of-bo&#34;&gt;
 
 
-  &lt;a data-fancybox=&#34;&#34; href=&#34;https://w00zie.github.io/post/bell/img/bo_hudeda4c1d4ab9458826b6547fa4ae320a_55004_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;&amp;amp;lsquo;&amp;amp;lsquo;Convergence&amp;amp;rsquo;&amp;amp;rsquo; of BO&#34;&gt;
+  &lt;a data-fancybox=&#34;&#34; href=&#34;https://w00zie.github.io/post/bell/img/bo_hu999867a8f78e53b855f99f20ee9487ec_63804_2000x2000_fit_lanczos_2.png&#34; data-caption=&#34;&amp;amp;lsquo;&amp;amp;lsquo;Convergence&amp;amp;rsquo;&amp;amp;rsquo; of BO&#34;&gt;
 
 
-  &lt;img data-src=&#34;https://w00zie.github.io/post/bell/img/bo_hudeda4c1d4ab9458826b6547fa4ae320a_55004_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;720&#34; height=&#34;496&#34;&gt;
+  &lt;img data-src=&#34;https://w00zie.github.io/post/bell/img/bo_hu999867a8f78e53b855f99f20ee9487ec_63804_2000x2000_fit_lanczos_2.png&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;720&#34; height=&#34;496&#34;&gt;
 &lt;/a&gt;
 
 
